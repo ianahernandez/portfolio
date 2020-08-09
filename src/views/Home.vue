@@ -11,6 +11,11 @@ import HelloWorld from '@/components/HelloWorld.vue'
 
 export default {
   name: 'Home',
+  data(){
+    return{
+      profile: null,
+    }
+  },
   components: {
     HelloWorld
   },
