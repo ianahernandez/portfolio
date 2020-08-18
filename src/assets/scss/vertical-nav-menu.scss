@@ -1,0 +1,13 @@
+.vertical-nav-menu{
+  position: fixed;
+  width: 100%;
+  max-width: 260px;
+  background: $violet;
+  height: 100vh;
+  padding: 2rem;
+  border-radius: 0px 25px 25px 0px;
+  box-shadow: 3px 3px 15px rgba($primary, 0.41);
+  &.reduced{
+    max-width: 80px;
+  }
+}

@@ -3,6 +3,12 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
+/* Tailwind */
+import './assets/css/tailwind.css'
+
+/* Styles */
+import './assets/scss/main.scss'
+
 /* Vue Resource */
 import VueResource from 'vue-resource';
 Vue.use(VueResource);

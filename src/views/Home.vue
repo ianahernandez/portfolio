@@ -1,13 +1,12 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    Home
+    <button class="btn btn-gray">Test</button>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
 
 export default {
   name: 'Home',
@@ -16,11 +15,8 @@ export default {
       profile: null,
     }
   },
-  components: {
-    HelloWorld
-  },
   mounted(){
-    this.$store.dispatch('getProfileInfo');
+    //this.$store.dispatch('getProfileInfo');
   }
 }
 </script>

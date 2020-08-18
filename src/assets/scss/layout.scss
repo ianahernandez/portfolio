@@ -1,0 +1,13 @@
+body{
+  background: $cream;
+}
+.content-layout{
+  margin-left: 260px;
+  padding: 1rem;
+  &.wide{
+    padding-left: 80px;
+  }
+  &.full{
+    padding-left: 0px;
+  }
+}
