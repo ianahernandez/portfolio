@@ -2,12 +2,13 @@ body{
   background: $cream;
 }
 .content-layout{
+  position: relative;
   margin-left: 260px;
   padding: 1rem;
+  width: 100%;
+  min-height: 100vh;
+  height: 100%;
   &.wide{
-    padding-left: 80px;
-  }
-  &.full{
-    padding-left: 0px;
+    margin-left: 80px !important;
   }
 }

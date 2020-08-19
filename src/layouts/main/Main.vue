@@ -3,18 +3,15 @@
     <div class="flex">
       <vertical-nav-menu />
       <transition mode="out-in">
-        <div
-          class="content-layout"
-        >
+        <div class="content-layout ml-0 lg:ml-64">
           <!-- Header -->
-          <div class="bg-teal cursor-pointer">
-            Header
-          </div>
-        <router-view
-                />
-                 <!-- Footer -->
-          <div class="bg-teal cursor-pointer">
-            Footer
+          <div class="header mt-4">ES</div>
+          <h1 class="title">Sobre mí</h1>
+          <router-view />
+          <!-- Footer -->
+          <div class="footer">
+            <span>Ana Hernández 2020</span>
+            <span>Hecho a mano y con</span>
           </div>
         </div>
       </transition>
