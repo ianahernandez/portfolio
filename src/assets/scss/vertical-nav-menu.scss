@@ -11,6 +11,11 @@
   }
 }
 
+.menu-title{
+  @apply font-bold text-2xl text-cream pl-0 text-center;
+  font-family: 'Rubik', sans-serif;
+}
+
 .menu-item{
   @apply rounded-md mb-4 px-3 py-2 text-left inline-block w-full;
   &:not(.active){

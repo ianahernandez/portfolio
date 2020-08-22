@@ -1,6 +1,9 @@
 <template>
   <div>
-    <router-link :class="isActive ? 'menu-item active' : 'menu-item'" :to="url">{{name}}</router-link>
+    <router-link :class="isActive ? 'menu-item active' : 'menu-item'" :to="url">
+      <i :class="`icofont-${icon} mr-2`"></i>
+      {{name}}
+    </router-link>
   </div>
 </template>
 
@@ -16,6 +19,10 @@ export default {
       type: String,
       required: true,
       default: ""
+    },
+    icon:{
+      type: String,
+      default: 'at'
     }
   },
   computed: {

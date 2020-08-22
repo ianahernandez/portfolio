@@ -1,12 +1,12 @@
 <template>
-  <div class="vertical-nav-menu hidden lg:block transition-none">
-    <h1 class="font-bold text-2xl text-cream pl-0 text-center">Ana Hernández</h1>
+  <div :class="`vertical-nav-menu ${ menuExpanded? '': 'hidden' } lg:block transition-display ease-in-out`">
+    <h1 class="menu-title">Ana Hernández</h1>
     <div class="mt-16">
-      <item name="Sobre mí" url="/sobre-mi"></item>
-      <item name="Resumen" url="/resumen"></item>
-      <item name="Portafolio" url="/portafolio"></item>
-      <item name="Blog" url="/blog"></item>
-      <item name="Contacto" url="/contacto"></item>
+      <item name="Sobre mí" url="/sobre-mi" icon="learn"></item>
+      <item name="Resumen" url="/resumen" icon="license"></item>
+      <item name="Portafolio" url="/portafolio" icon="bag-alt"></item>
+      <item name="Blog" url="/blog" icon="list"></item>
+      <item name="Contacto" url="/contacto" icon="comment"></item>
     </div>
   </div>
 </template>
@@ -14,6 +14,12 @@
 <script>
 import Item from './VerticalNavMenuItem'
 export default {
+  props: {
+    menuExpanded:{
+      type: Boolean,
+      default: false
+    }
+  },
   components: {
     Item
   }

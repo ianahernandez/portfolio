@@ -3,11 +3,23 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
+/* Styles */
+import './assets/scss/main.scss'
+
 /* Tailwind */
 import './assets/css/tailwind.css'
 
-/* Styles */
-import './assets/scss/main.scss'
+/* Font Style */
+import './assets/css/icofont.min.css'
+
+// Vuejs - Vue wrapper for hammerjs
+import { VueHammer } from "vue2-hammer";
+Vue.use(VueHammer);
+
+VueHammer.config.swipe = {
+  threshold: 200
+};
+
 
 /* Vue Resource */
 import VueResource from 'vue-resource';

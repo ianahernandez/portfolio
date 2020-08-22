@@ -19,9 +19,14 @@ module.exports = {
       },
       boxShadow: {
         '3xl': '3px 3px 15px rgba(47, 46, 139, 0.41)',
+      },
+      transitionProperty: {
+        'display': 'display'
       }
     },
-    variants: {},
+    variants: {
+      transitionProperty: ['responsive', 'hover', 'focus', 'display'],
+    },
     plugins: [],
   }
 }
