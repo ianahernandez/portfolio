@@ -9,10 +9,34 @@
 }
 
 .title{
-  @apply text-primary-500 font-bold text-3xl pl-12 text-left mt-4;
+  @apply text-primary-500 font-bold text-2xl pl-12 text-left mt-4;
   font-family: 'Rubik', sans-serif;
 }
 
 .footer{
   @apply flex absolute bottom-0 justify-around w-11/12 p-2 flex-wrap
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 3px;
+  height: 16px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 100vh;
+  background: #edf2f7;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #cbd5e0;
+  border-radius: 100vh;
+  border: 3px solid #edf2f7;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #a0aec0;
 }

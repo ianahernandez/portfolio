@@ -1,7 +1,7 @@
 <template>
-  <div :class="`vertical-nav-menu ${ menuExpanded? '': 'hidden' } lg:block transition-display ease-in-out`">
+  <div :class="`vertical-nav-menu vertical-scroll sb-thumb:bg-red-500 sb-track:rounded ${ menuExpanded? 'menu-show': '' }`">
     <h1 class="menu-title">Ana Hernández</h1>
-    <div class="mt-16">
+    <div class="menu-content vertical-scroll">
       <item name="Sobre mí" url="/sobre-mi" icon="learn"></item>
       <item name="Resumen" url="/resumen" icon="license"></item>
       <item name="Portafolio" url="/portafolio" icon="bag-alt"></item>

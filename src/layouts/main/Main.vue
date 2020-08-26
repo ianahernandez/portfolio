@@ -3,7 +3,6 @@
     <div class="flex">
       <vertical-nav-menu :menuExpanded="menuExpanded"
                         v-hammer:swipe.left="collapseExpand"/>
-      <transition mode="out-in">
         <div class="content-layout ml-0 lg:ml-64">
           <!-- Header -->
           <div class="header mt-4">
@@ -17,7 +16,6 @@
             <span>Hecho a mano y con <i class="icofont-heart text-violet"/></span>
           </div>
         </div>
-      </transition>
     </div>
   </div>
 </template>
