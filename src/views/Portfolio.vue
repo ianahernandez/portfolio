@@ -1,5 +1,7 @@
 <template>
-  <div class="about">
-    <h1>This is an Portfolio page</h1>
+  <div class="content">
+    <div class="card">
+      This is an about page
+    </div>
   </div>
 </template>

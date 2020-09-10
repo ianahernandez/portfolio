@@ -1,5 +1,5 @@
 <template>
-  <div :class="`vertical-nav-menu vertical-scroll sb-thumb:bg-red-500 sb-track:rounded ${ menuExpanded? 'menu-show': '' }`">
+  <div :class="`vertical-nav-menu vertical-scroll ${ menuExpanded? 'menu-show': '' }`">
     <h1 class="menu-title">Ana Hernández</h1>
     <div class="menu-content vertical-scroll">
       <item name="Sobre mí" url="/sobre-mi" icon="learn"></item>

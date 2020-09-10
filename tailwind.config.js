@@ -13,6 +13,7 @@ module.exports = {
         },
         violet:'#5443C3',
         cream: '#F4F4F4',
+        'gray-dark': '#201D1D'
       },
       screens: {
         xs: '400px',

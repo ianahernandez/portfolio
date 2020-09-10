@@ -1,0 +1,30 @@
+.card{
+  @apply w-full p-5 rounded-lg bg-white;
+  box-shadow: 2px 3px 12px -8px $primary;
+}
+
+.img-profile{
+  @apply rounded-full h-auto overflow-hidden;
+  box-shadow: 2px 3px 12px -8px $primary;
+}
+
+.btn{
+  @apply rounded-md font-bold py-2 px-4;
+  font-family: Rubik;
+}
+
+.btn-circle{
+  @apply rounded-full text-primary-500 p-2;
+  &:hover{
+    @apply bg-purple-300;
+  }
+
+
+}
+
+.btn-primary{
+  @apply text-cream;
+  background:  linear-gradient(90deg, $primary 0%, #5443C3 55.73%, #8076BC 100%);
+  font-size: 15px;
+  letter-spacing: 0.4px;
+}

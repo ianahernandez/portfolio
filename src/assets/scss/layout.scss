@@ -5,11 +5,14 @@ body{
 .content-layout{
   position: relative;
   margin-left: 260px;
-  padding: 1rem;
+  padding: 1rem 1.5rem;
   width: 100%;
   min-height: 100vh;
   height: 100%;
   &.wide{
     margin-left: 80px !important;
   }
+}
+.content{
+  @apply mt-8;
 }

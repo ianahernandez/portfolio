@@ -17,6 +17,10 @@
   @apply flex absolute bottom-0 justify-around w-11/12 p-2 flex-wrap
 }
 
+p{
+  @apply text-left text-gray-dark;
+}
+
 /* width */
 ::-webkit-scrollbar {
   width: 3px;
