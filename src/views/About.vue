@@ -1,15 +1,19 @@
 <template>
   <div class="content">
     <div class="card flex">
-      <div class="w-1/3 pr-5">
-        <div class="img-profile">
+      <div class="w-1/4 px-5 flex flex-col justify-between">
+        <div class="img-profile m-3">
           <img src="@/assets/img/profile.png" alt="Foto de Ana" />
         </div>
-        <div>
-          <a href="/git" class="btn-circle">A</a>
+        <div class="w-full flex justify-between mt-4">
+          <a href="/git" class="btn-icon"><i class="icofont-download"/></a>
+          <a href="/git" class="btn-icon"><i class="icofont-download"/></a>
+          <a href="/git" class="btn-icon"><i class="icofont-download"/></a>
+          <a href="/git" class="btn-icon"><i class="icofont-download"/></a>
+          <a href="/git" class="btn-icon"><i class="icofont-download"/></a>
         </div>
       </div>
-      <div class="w-2/3 ml-10">
+      <div class="w-3/4 ml-10 flex flex-col justify-between">
         <p>
           Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
           Ipsum has been the industry's standard dummy text ever since the 1500s, when
@@ -19,7 +23,7 @@
           1960s with the release of Letraset sheets containing Lorem Ipsum passages, and
           more recently with desktop publishing
         </p>
-        <button class="btn btn-primary mt-8">
+        <button class="btn btn-primary">
           <i class="icofont-download"></i>
           Descargar CV
         </button>

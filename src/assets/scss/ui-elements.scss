@@ -11,12 +11,16 @@
 .btn{
   @apply rounded-md font-bold py-2 px-4;
   font-family: Rubik;
+  width: max-content;
 }
 
-.btn-circle{
-  @apply rounded-full text-primary-500 p-2;
+.btn-icon{
+  @apply rounded-full text-primary-500 inline-block text-center;
+  line-height: 30px;
+  height: 30px;
+  width: 30px;
   &:hover{
-    @apply bg-purple-300;
+    @apply bg-purple-200;
   }
 
 
