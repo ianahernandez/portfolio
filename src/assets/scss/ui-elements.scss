@@ -1,17 +1,90 @@
 .card{
-  @apply w-full p-5 rounded-lg bg-white;
+  @apply w-full p-5 rounded-lg bg-white relative;
   box-shadow: 2px 3px 12px -8px $primary;
+  &-image{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin: 0.5rem auto;
+    img{
+      width: auto !important;
+    }
+  }
+
+  &-hover{
+    display: none;
+  }
+
+  &:hover{
+    .card-no-hover{
+      display: none;
+    }
+    .card-hover{
+      @apply block absolute h-full w-full text-cream p-2;
+      background: rgba($violet, 0.68);
+      top: 0;
+      left: 0;
+    }
+  }
+}
+.card-resume{
+  padding-left: 1.5rem;
+  position: relative;
+  &-content{
+    background: white;
+    box-shadow: 2px 3px 12px -8px $primary;
+    //box-shadow: inset -4px -4px 7px rgba(221, 217, 247, 0.1), inset 4px 4px 15px rgba(128, 118, 188, 0.28);
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 1.75rem;
+    h3{
+      font-family: Rubik;
+    }
+  }
+  &-line{
+    &::before, &::after{
+      @apply bg-primary-500 rounded-md absolute left-0;
+      content: "";
+      display: block;
+      width: 3px;
+    }
+    &::before{
+      height: 5px;
+      width: 5px;
+    }
+    &::after{
+      top: 15px;
+      height: 100%;
+    }
+
+  }
+}
+
+.item-carousel{
+  @apply flex flex-col justify-center items-center py-2 px-3 mb-1 rounded-md;
+  &:hover{
+    @apply bg-white cursor-pointer;
+    box-shadow: 2px 3px 12px -8px $primary;
+  }
+  img{
+    height: 4rem;
+    width: auto;
+  }
 }
 
 .img-profile{
-  @apply rounded-full h-auto overflow-hidden;
+  @apply rounded-full h-auto overflow-hidden m-3;
   box-shadow: 2px 3px 12px -8px $primary;
 }
 
 .btn{
-  @apply rounded-md font-bold py-2 px-4;
+  @apply rounded-md py-2 px-4;
   font-family: Rubik;
   width: max-content;
+  &:hover{
+    box-shadow: 2px 2px 4px rgba($primary, 0.43);
+  }
 }
 
 .btn-icon{
@@ -20,15 +93,82 @@
   height: 30px;
   width: 30px;
   &:hover{
-    @apply bg-purple-200;
+    background: $violet-light;
+    box-shadow: 2px 2px 4px rgba($primary, 0.43);
   }
-
-
 }
 
 .btn-primary{
-  @apply text-cream;
+  @apply text-cream font-bold;
   background:  linear-gradient(90deg, $primary 0%, #5443C3 55.73%, #8076BC 100%);
   font-size: 15px;
   letter-spacing: 0.4px;
+}
+
+.btn-dark{
+  @apply text-cream bg-primary-500 border border-cream;
+  font-size: 15px;
+  letter-spacing: 0.4px;
+}
+.btn-light{
+  @apply text-primary-500 border border-primary-500;
+  background-color: $violet-light;
+  font-size: 15px;
+  letter-spacing: 0.4px;
+}
+.btn-sm{
+  @apply pt-0 pb-1 px-2 mx-1 my-2;
+ font-size: 13px; 
+}
+
+
+.tag{
+  @apply rounded-full;
+  background: $violet-light;
+  box-shadow: 2px 2px 4px rgba($primary, 0.43);
+  color: $violet;
+  padding: 0 .75rem;
+  &-left{
+    @apply absolute;
+    left: 5px;
+    top: 5px;
+  }
+  &-right{
+    @apply absolute;
+    right: 5px;
+    top: 5px;
+  }
+  
+}
+
+/* Modal */
+
+.modal{
+  @apply hidden absolute top-0 bottom-0 right-0 left-0 z-20 justify-center content-center overflow-x-hidden overflow-y-auto py-4;
+  background: rgba($gray-dark, 0.50);
+  &.show{
+    @apply flex;
+  }
+  &-header{
+    @apply flex justify-between items-center bg-white pb-2 pr-3 rounded-tl-lg rounded-tr-lg;
+    box-shadow: 2px 3px 22px -19px #2F2E8B;
+  }
+  &-body{
+    @apply bg-cream rounded-lg max-w-full w-11/12;
+    height: fit-content;
+  }
+  &-close{
+    @apply text-lg px-2;
+  }
+  &-content{
+    @apply p-3;
+  }
+
+}
+
+@media (max-width: 640px) {
+  .img-profile{
+    width: 150px;
+    margin: auto;
+  }
 }

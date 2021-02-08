@@ -1,33 +1,79 @@
 <template>
-  <div class="content">
-    <div class="card flex">
-      <div class="w-1/4 px-5 flex flex-col justify-between">
-        <div class="img-profile m-3">
-          <img src="@/assets/img/profile.png" alt="Foto de Ana" />
+  <div id="about" class="content" v-if="data">
+    <div class="card md:flex">
+      <div class="w-full md:w-1/3 xl:w-1/5 px-5 flex flex-col justify-between">
+        <div class="img-profile">
+          <img :src="`${$store.state.staticPath}${data.image.url}`" alt="Foto de Ana" />
         </div>
-        <div class="w-full flex justify-between mt-4">
-          <a href="/git" class="btn-icon"><i class="icofont-download"/></a>
-          <a href="/git" class="btn-icon"><i class="icofont-download"/></a>
-          <a href="/git" class="btn-icon"><i class="icofont-download"/></a>
-          <a href="/git" class="btn-icon"><i class="icofont-download"/></a>
-          <a href="/git" class="btn-icon"><i class="icofont-download"/></a>
+        <div
+          class="px-6 sm:px-0 pw-full flex justify-around lg:justify-between mt-4 mb-3 lg:mb-0 text-lg"
+        >
+          <a v-for="item in data.social_media_ids" :key="item.id" :href="item.url" class="btn-icon" target="_blank">
+            <i :class="`icon-${item.icon}`"/>
+          </a>
         </div>
       </div>
-      <div class="w-3/4 ml-10 flex flex-col justify-between">
-        <p>
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-          Ipsum has been the industry's standard dummy text ever since the 1500s, when
-          an unknown printer took a galley of type and scrambled it to make a type
-          specimen book. It has survived not only five centuries, but also the leap into
-          electronic typesetting, remaining essentially unchanged. It was popularised in the
-          1960s with the release of Letraset sheets containing Lorem Ipsum passages, and
-          more recently with desktop publishing
-        </p>
+      <div class="w-full md:w-2/3 xl:w-4/5 lg:ml-10 flex flex-col md:justify-between">
+        <div>
+          <h3 class="subtitle text-center md:text-left">{{data.name}} {{data.lastname}}</h3>
+          <div class="w-full flex flex-wrap text-sm lg:text-base mb-3">
+            <div class="text-gray-600 mr-4">
+              <i class="icon-work-2 mr-3" />{{data.title}}
+            </div>
+            <div class="text-gray-600 mr-4">
+              <i class="icon-grade mr-3" />{{data.profession}}
+            </div>
+            <div class="text-gray-600">
+              <i class="icon-pin mr-3" />{{data.location}}
+            </div>
+          </div>
+          <hr />
+          <vue-simple-markdown class="lg:text-lg my-3" :source="data.about"></vue-simple-markdown>
+        </div>
         <button class="btn btn-primary">
-          <i class="icofont-download"></i>
+          <i class="icon-download"></i>
           Descargar CV
         </button>
       </div>
     </div>
+    <div class="mt-4">
+      <h2 class="title my-5">Lo que hago</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="card">
+          <div class="card-image">
+            <img src="@/assets/img/logic-design.png" alt />
+          </div>
+          <p class="text-center">Diseño lógico de aplicaciones</p>
+        </div>
+        <div class="card">
+          <div class="card-image">
+            <img src="@/assets/img/logic-design.png" alt />
+          </div>
+          <p class="text-center">Diseño lógico de aplicaciones</p>
+        </div>
+        <div class="card">
+          <div class="card-image">
+            <img src="@/assets/img/logic-design.png" alt />
+          </div>
+          <p class="text-center">Diseño lógico de aplicaciones</p>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
+<script>
+// @ is an alias to /src
+
+export default {
+  name: 'About',
+  data(){
+    return{
+      data: null
+    }
+  },
+  async mounted(){
+    this.$parent.titleName = "Sobre mí"
+    this.data = await this.$store.dispatch('getProfileInfo')
+  }
+}
+</script>

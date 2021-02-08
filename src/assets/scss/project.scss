@@ -1,0 +1,20 @@
+.banner{
+  @apply w-full justify-between items-center  bg-primary-100 rounded-lg py-2;
+  //max-height: 250px ;
+  p{
+    @apply w-full px-4;
+  }
+  img{
+    @apply m-auto;
+    max-height: 250px ;
+  }
+}
+.project-item{
+  @apply mt-3;
+  p{
+    @apply px-4 py-1;
+  }
+  h4{
+    @apply pl-4 font-bold mt-3;
+  }
+}

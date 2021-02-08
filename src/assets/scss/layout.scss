@@ -1,11 +1,15 @@
+*:focus{
+  outline: none;
+}
 body{
   background: $cream;
   font-family: 'Roboto', sans-serif;
 }
 .content-layout{
   position: relative;
-  margin-left: 260px;
+  margin-left: 225px;
   padding: 1rem 1.5rem;
+  padding-bottom: 60px;
   width: 100%;
   min-height: 100vh;
   height: 100%;
@@ -15,4 +19,10 @@ body{
 }
 .content{
   @apply mt-8;
+}
+@media (max-width: 600px) {
+  .content-layout{
+    padding: 1rem 0.5rem;
+    padding-bottom: 90px;
+  }
 }

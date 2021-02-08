@@ -1,10 +1,11 @@
 .vertical-nav-menu{
   @apply fixed w-full bg-violet transition duration-700 ease-in-out;
-  max-width: 260px;
+  max-width: 225px;
   height: 100vh;
-  padding: 2rem;
+  padding: 1rem;
   border-radius: 0px 25px 25px 0px;
   box-shadow: 3px 3px 15px rgba($primary, 0.41);
+  transform: translateX(-280px);
   z-index: 3;
   &.reduced{
     max-width: 80px;
@@ -12,6 +13,10 @@
   &.menu-show{
     transform: translateX(0);
   }
+}
+
+.nav-menu-button{
+  @apply text-primary-500 bg-white shadow-md text-lg px-2 ml-2 rounded-md;
 }
 
 .menu-title{
@@ -37,13 +42,12 @@
   }
 }
 
-
 .vertical-scroll{
   @apply overflow-y-auto;
 }
 
-@media (max-width: 640px) {
+@screen lg{
   .vertical-nav-menu{
-    transform: translateX(-280px);
+    transform: translateX(0px);
   }
 }
