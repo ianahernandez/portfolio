@@ -10,10 +10,14 @@
   "dependencies": {
     "core-js": "^3.6.5",
     "postcss-import": "^12.0.1",
+    "qs": "^6.9.6",
     "tailwindcss": "^1.6.2",
     "vue": "^2.6.11",
+    "vue-disqus": "^4.0.1",
     "vue-resource": "^1.5.1",
     "vue-router": "^3.2.0",
+    "vue-simple-markdown": "^1.1.4",
+    "vue-slick-carousel": "^1.0.6",
     "vue2-hammer": "^2.1.2",
     "vuex": "^3.4.0"
   },

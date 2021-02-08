@@ -1,7 +1,7 @@
 <template>
   <div>
     <router-link :class="isActive ? 'menu-item active' : 'menu-item'" :to="url">
-      <i :class="`icofont-${icon} mr-2`"></i>
+      <i :class="`icon-${icon} mr-2`"></i>
       {{name}}
     </router-link>
   </div>
@@ -27,7 +27,7 @@ export default {
   },
   computed: {
     isActive(){
-      return this.$route.path == this.url
+      return this.$route.path.includes(this.url)
     }
   },
 }

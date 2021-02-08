@@ -2,18 +2,19 @@
   <div>
     <div class="flex">
       <vertical-nav-menu :menuExpanded="menuExpanded"
-                        v-hammer:swipe.left="collapseExpand"/>
-        <div class="content-layout ml-0 lg:ml-64">
+                        v-hammer:swipe.left="collapseExpand" @closeMenu="collapseExpand"/>
+        <div class="content-layout ml-0 lg:ml-56">
           <!-- Header -->
-          <div class="header mt-4">
-            <button @click="collapseExpand">Menu</button>
-            <i class="icofont-globe mr-2"/>ES</div>
-          <h1 class="title">Sobre mí</h1>
+          <div class="header md:mt-4">
+            <button class="text-gray-600"><i class="icon-globe mr-1"/>ES</button>
+            <button class="nav-menu-button lg:hidden" @click="collapseExpand"><i class="icon-bars"/></button>
+            </div>
+          <h1 class="title">{{ titleName }}</h1>
           <router-view />
           <!-- Footer -->
           <div class="footer">
             <span>Ana Hernández 2020</span>
-            <span>Hecho a mano y con <i class="icofont-heart text-violet"/></span>
+            <span>Hecho a mano y con <i class="icon-heart text-violet"/></span>
           </div>
         </div>
     </div>
@@ -26,6 +27,7 @@ export default {
   data(){
     return{
       menuExpanded: false,
+      titleName: "Sobre mí"
     }
   },
   components: {
@@ -33,7 +35,6 @@ export default {
   },
   methods: {
     collapseExpand(){
-      console.log("test")
       this.menuExpanded = !this.menuExpanded
     }
   },

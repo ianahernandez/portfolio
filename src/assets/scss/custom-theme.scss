@@ -1,6 +1,5 @@
 .header{
-  @apply shadow-lg float-right;
- 
+  @apply float-right;
 }
 @screen lg {
   .header {
@@ -9,16 +8,70 @@
 }
 
 .title{
-  @apply text-primary-500 font-bold text-2xl pl-12 text-left mt-4;
+  @apply text-primary-500 font-bold text-2xl pl-12 text-left;
+  font-family: 'Rubik', sans-serif;
+}
+
+.subtitle{
+  @apply text-primary-500 font-bold text-xl text-left my-2;
+  font-family: 'Rubik', sans-serif;
+}
+
+.heading-2{
+  @apply text-primary-500 font-medium text-xl;
   font-family: 'Rubik', sans-serif;
 }
 
 .footer{
-  @apply flex absolute bottom-0 justify-around w-11/12 p-2 flex-wrap
+  @apply flex absolute bottom-0 left-0 justify-around w-full p-2 flex-wrap bg-primary-100 text-sm;
+  border-radius: 15px 15px 0px 0px;
 }
 
-p{
+p, span{
   @apply text-left text-gray-dark;
+}
+
+/* .vue-simple-markdown, .markdown-body{
+  font-family: 'Rubik', sans-serif;
+} */
+
+button:focus {
+  outline: none !important; 
+}
+.line-clamp-3{
+  display: -webkit-box !important;
+  max-height: 5.4em; /* double the size of line-height */
+  line-height: 1.8em;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow: hidden;
+  -webkit-line-clamp: 3 !important;
+  -webkit-box-orient: vertical !important;
+  -moz-line-clamp: 3 !important;
+  -moz-box-orient: vertical !important;
+  -o-line-clamp: 3 !important;
+  -o-box-orient: vertical !important;
+  -ms-line-clamp: 3 !important;
+  -ms-box-orient: vertical !important;
+  line-clamp: 3 !important;
+}
+
+.line-clamp-2{
+  display: -webkit-box !important;
+  max-height: 3.6em; /* double the size of line-height */
+  line-height: 1.8em;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow: hidden;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  -moz-line-clamp: 2 !important;
+  -moz-box-orient: vertical !important;
+  -o-line-clamp: 2 !important;
+  -o-box-orient: vertical !important;
+  -ms-line-clamp: 2 !important;
+  -ms-box-orient: vertical !important;
+  line-clamp: 2 !important;
 }
 
 /* width */
@@ -43,4 +96,10 @@ p{
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #a0aec0;
+}
+
+@media (min-width: 768px){
+  .title{
+    @apply mt-4;
+    }
 }

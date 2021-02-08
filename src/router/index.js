@@ -1,10 +1,5 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import About from "../views/About.vue";
-import Blog from "../views/Blog.vue";
-import Contact from "../views/Contact.vue";
-import Portfolio from "../views/Portfolio.vue";
-import Resume from "../views/Resume.vue";
 
 Vue.use(VueRouter)
 
@@ -17,27 +12,32 @@ const routes = [
       {
         path: '/sobre-mi',
         name: 'about',
-        component: About
+        component: () => import("@/views/About.vue"),
       },
       {
         path: '/resumen',
         name: 'resume',
-        component: Resume
+        component: () => import("@/views/Resume.vue"),
       },
       {
         path: '/portafolio',
         name: 'portfolio',
-        component: Portfolio
+        component: () => import("@/views/Portfolio.vue"),
       },
       {
         path: '/blog',
         name: 'blog',
-        component: Blog
+        component: () => import("@/views/Blog.vue"),
+      },
+      {
+        path: '/blog/:slug',
+        name: 'post',
+        component: () => import("@/views/Post.vue"),
       },
       {
         path: '/contacto',
         name: 'contact',
-        component: Contact
+        component: () => import("@/views/Contact.vue"),
       },
     ]
   }
