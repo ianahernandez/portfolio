@@ -36,6 +36,42 @@ Vue.http.options.root = process.env.VUE_APP_URL;
 
 Vue.config.productionTip = false
 
+
+/* Filter date */
+Vue.filter('dateFull', function (value) {
+  if (!value) return ''
+  try {
+    let ndate = new Date(value.replace("-","/"))
+    let dateFormatted = new Intl.DateTimeFormat('es-ES', { month: 'long', day: 'numeric', year: 'numeric' }).format(ndate)
+    return dateFormatted;
+  } catch {
+    return value;
+  }
+  
+})
+
+Vue.filter('dateShort', function (value) {
+  if (!value) return ''
+  try {
+    let ndate = new Date(value.replace("-","/"))
+    let dateFormatted = new Intl.DateTimeFormat('es-ES', { month: 'long', year: 'numeric' }).format(ndate)
+    return dateFormatted;
+  } catch {
+    return value;
+  }
+})
+
+Vue.filter('dateNumeric', function (value) {
+  if (!value) return ''
+  try {
+    let ndate = new Date(value.replace("-","/"))
+    let dateFormatted = new Intl.DateTimeFormat('es-ES', { }).format(ndate)
+    return dateFormatted;
+  } catch {
+    return value;
+  }
+})
+
 new Vue({
   router,
   store,

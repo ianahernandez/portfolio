@@ -3,8 +3,17 @@ import Vue from 'vue';
 export default{
 
   getProfileInfo: async() =>{
-    let data = await Vue.http.get(`profile`)
-    return data.body
+  let resp = await Vue.http.get(`profile`)
+                      /* .then(resp => resp.json())
+                      .then(resp => {
+                        console.log(resp)
+                        return resp.body
+
+                      }).catch( err => {
+                        return err
+                      }) */
+    //console.log("resp",resp)
+    return resp.body
   },
 
   getResume : async () => {

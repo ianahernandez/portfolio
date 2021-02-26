@@ -25,6 +25,7 @@
                 :date="item.date"
                 :duration="item.duration"
                 :description="item.name"
+                :credential="item.certificateUrl"
               />
             </template>
           </div>
@@ -39,7 +40,7 @@
                 :institute="item.institute"
                 :dateFrom="item.from"
                 :dateTo="item.to"
-                :description="item.name"
+                :description="item.description"
                 :actual="item.actual"
               />
             </template>

@@ -7,16 +7,16 @@
       <div class="md:w-8/12 md:pr-4">
         <div class="card flex flex-wrap">
           <div class="w-full md:w-1/2 px-2 my-2">
-            <label class="text-gray-600"><i class="icon-user-1"></i> Tu nombre</label>
-            <input type="text" class="w-full bg-purple-100" placeholder="John Doe">
+            <label class="text-gray-700" for="name"><i class="icon-user-1"></i> Tu nombre</label>
+            <input type="text" class="w-full bg-purple-100" placeholder="John Doe" id="name">
           </div>
           <div class="w-full md:w-1/2 px-2 my-2">
-            <label class="text-gray-600"><i class="icon-email"></i> Correo electrónico</label>
-            <input type="email" class="w-full bg-purple-100" placeholder="correo@example.com">
+            <label class="text-gray-700" for="email"><i class="icon-email"></i> Correo electrónico</label>
+            <input type="email" class="w-full bg-purple-100" placeholder="correo@example.com" id="email">
           </div>
           <div class="w-full px-2 my-2">
-            <label class="text-gray-600"><i class="icon-message"></i> Mensaje</label>
-            <textarea class="w-full bg-purple-100" name="content" id="" rows="5" placeholder="Ingresa aquí tu mensaje"></textarea>
+            <label class="text-gray-700" for="message"><i class="icon-message"></i> Mensaje</label>
+            <textarea class="w-full bg-purple-100" name="content" id="message" rows="5" placeholder="Ingresa aquí tu mensaje"></textarea>
           </div>
           <button class="btn btn-primary ml-auto mr-2"><i class="icon-send-alt"></i> Enviar</button>
         </div>
