@@ -9,7 +9,7 @@
         <vue-simple-markdown class="mx-4" :source="data.about"></vue-simple-markdown>
       </div>
       <div class="w-full md:w-1/2">
-        <img v-if="data.imageBanner" :src="`${$store.state.staticPath}${data.imageBanner.formats.medium.url}`" :alt="data.alternativeText" />
+        <img v-if="data.imageBanner" :src="`${data.imageBanner.formats.medium.url}`" :alt="data.alternativeText" />
       </div>
     </div>
 

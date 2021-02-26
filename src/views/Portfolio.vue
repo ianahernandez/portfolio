@@ -1,20 +1,20 @@
 <template>
   <div class="content">
     <div class="mb-8 p-3">
-      <VueSlickCarousel v-if="categories" v-bind="carouseLSettings">
-        <ItemCarousel v-for="category in categories" :key="category.id" :text="category.name" :foto="`${$store.state.staticPath}${category.image.url}`"></ItemCarousel>
+      <VueSlickCarousel v-if="categories.length" v-bind="carouseLSettings">
+        <ItemCarousel v-for="category in categories" :key="category.id" :text="category.name" :foto="category.image.url"></ItemCarousel>
       </VueSlickCarousel>
     </div>
     <section class="flex portfolio">
       <div class="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
         <div class="card overflow-hidden" v-for="(item,index) in data" :key="index">
-          <span v-if="!item.isHover" class="card-no-hover tag tag-left">{{item.category.name}}</span>
+          <span v-if="!item.isHover" class="card-no-hover tag tag-left">{{item.categories[0].name}}</span>
           <div class="card-image h-32">
-            <img :src="`${$store.state.staticPath}${item.image.url}`" :alt="`Logo de ${item.image.alternativeText}`" />
+            <img :src="item.image.url" :alt="`Logo de ${item.image.alternativeText}`" />
           </div>
           <p class="text-center">{{item.subtitle}}</p>
           <div class="card-hover">
-            <h2 class="subtitle text-cream">{{item.name}}</h2>
+            <h2 class="subtitle text-cream">{{item.name? item.name:""}}</h2>
             <p class="text-cream line-clamp-3">{{item.shortDescription}}</p>
             <div class="absolute bottom-0 right-0">
               <button class="btn btn-light btn-sm" @click="openGallery(item)">
@@ -189,7 +189,7 @@ export default {
           }
         ]
       },
-      categories: null,
+      categories: [],
       carouselGallery: {
         dots: true,
         focusOnSelect: false,

@@ -10,16 +10,16 @@
                 <h2 class="heading-2">{{post.title}}</h2>
                 <span class="tag text-sm h-5 px-2">{{post.category.name}}</span>
               </div>
-              <span class="text-xs text-gray-600">{{post.updated_at}}</span>
+              <span class="text-xs text-gray-700">{{post.updated_at}}</span>
               <p class="text-sm line-clamp-2 mb-2">{{post.shortDescription}}</p>
               <div class="flex justify-between">
-                <span class="text-xs text-gray-600">Por {{post.updated_by.firstname}} {{post.updated_by.lastname}}</span>
+                <span class="text-xs text-gray-700">Por {{post.updated_by.firstname}} {{post.updated_by.lastname}}</span>
                 <div class="flex">
-                  <div class="text-primary-300 mr-2"><i class="icon-eye "></i> <span class="font-bold text-sm text-primary-300 ">10</span></div>
+                  <div class="text-primary-400 mr-2"><i class="icon-eye "></i> <span class="font-bold text-sm text-primary-400 ">10</span></div>
                   <div class="text-red-300"><i class="icon-comment-alt"></i> <span class="font-bold text-sm text-red-300 "></span>
-                    <DisqusCount ref="disqus" lang="es" shortname='ianahernandez' :identifier="`/blog/${post.slug}`" />
+                    <DisqusCount class="text-red-300 " lang="es" shortname='ianahernandez' :identifier="`/blog/${post.slug}`" />
                   </div>
-                  <!-- <div class="text-primary-300 mr-2"><i class="icon-eye "></i> <span class="font-bold text-sm text-primary-300 ">{{post.views}}</span></div>
+                  <!-- <div class="text-primary-400 mr-2"><i class="icon-eye "></i> <span class="font-bold text-sm text-primary-300 ">{{post.views}}</span></div>
                   <div class="text-red-300"><i class="icon-comment-alt"></i> <span class="font-bold text-sm text-red-300 "></span>{{post.comments}}</div> -->
                 </div>
               </div>
@@ -131,7 +131,6 @@ export default {
   async mounted(){
     this.$parent.titleName = "Blog"
     this.data = await this.$store.dispatch('getPosts')
-    this.$disqus.reset()
     //console.log(await this.$store.dispatch('getPosts'))
   }
 }

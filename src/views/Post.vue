@@ -5,13 +5,13 @@
         <div v-if="data.updated_by" class="mt-8 flex justify-between flex-wrap">
           <p class="text-gray-700">Por <span class="text-gray-700">{{data.updated_by.firstname}} {{data.updated_by.lastname}}</span> - <small>Publicado el {{data.updated_at}}</small></p>
           <div class="ml-auto">
-            <a href="#" class="btn-icon text-gray-500 hover:text-primary-500">
+            <a href="#" class="btn-icon text-gray-500 hover:text-primary-500" aria-label="Icon facebook">
               <i class="icon-facebook" />
             </a>
-            <a href="#" class="btn-icon text-gray-500 hover:text-primary-500">
+            <a href="#" class="btn-icon text-gray-500 hover:text-primary-500" aria-label="Icon twitter">
               <i class="icon-twitter" />
             </a>
-            <a href="#" class="btn-icon text-gray-500 hover:text-primary-500">
+            <a href="#" class="btn-icon text-gray-500 hover:text-primary-500" aria-label="Icon linkedin">
               <i class="icon-linkedin" />
             </a>
           </div>
@@ -19,8 +19,8 @@
 
         <article  v-if="data.image">
           <div class="my-4">
-            <img class="w-full rounded-lg" :src="`${$store.state.staticPath}${data.image.url}`" :alt="data.alternativeText">
-            <span class="text-gray-500 text-sm">{{data.image.caption}}</span>
+            <img class="w-full rounded-lg" :src="`${$store.state.staticPath}${data.image.url}`" :alt="data.image.alternativeText">
+            <span class="text-gray-700 text-sm">{{data.image.caption}}</span>
           </div>
           <vue-simple-markdown class="text-gray-800 leading-8" :source="data.content"></vue-simple-markdown>
           <!-- <div class="text-gray-800 leading-8" v-html="data.content"></div> -->
@@ -29,13 +29,13 @@
         <div class="w-full my-10">
           <p class="heading-2 text-center">¿Te gustó?, ¡Comparte!</p>
           <div class="mt-3 text-center">
-            <a href="#" class="btn-icon text-gray-500 hover:text-primary-500">
+            <a href="#" class="btn-icon text-gray-500 hover:text-primary-500" aria-label="Icon facebook">
               <i class="icon-facebook" />
             </a>
-            <a href="#" class="btn-icon text-gray-500 hover:text-primary-500">
+            <a href="#" class="btn-icon text-gray-500 hover:text-primary-500" aria-label="Icon twitter">
               <i class="icon-twitter" />
             </a>
-            <a href="#" class="btn-icon text-gray-500 hover:text-primary-500">
+            <a href="#" class="btn-icon text-gray-500 hover:text-primary-500" aria-label="Icon linkedin">
               <i class="icon-linkedin" />
             </a>
           </div>
