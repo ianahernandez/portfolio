@@ -15,7 +15,7 @@
       </div>
       <div class="w-full md:w-2/3 xl:w-4/5 lg:ml-10 flex flex-col md:justify-between">
         <div>
-          <h3 class="subtitle text-center md:text-left">{{data.name}} {{data.lastname}}</h3>
+          <h2 class="subtitle text-center md:text-left">{{data.name}} {{data.lastname}}</h2>
           <div class="w-full flex flex-wrap text-sm lg:text-base mb-3">
             <div class="text-gray-700 mr-4">
               <i class="icon-work-2 mr-3" />{{data.title}}
@@ -37,7 +37,7 @@
       </div>
     </div>
     <div class="mt-4">
-      <h2 class="title my-5">Lo que hago</h2>
+      <h3 class="title my-5">Lo que hago</h3>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div class="card">
           <div class="card-image">
