@@ -94,6 +94,7 @@
   </div>
 </template>
 <script>
+import { VueSimpleMarkdown } from 'vue-simple-markdown'
 import { Disqus } from 'vue-disqus'
 import "@/assets/scss/form.scss"
 
@@ -152,6 +153,7 @@ export default {
     }
   },
   components: {
+    VueSimpleMarkdown,
     Disqus
   },
   async mounted(){

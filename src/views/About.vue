@@ -3,7 +3,7 @@
     <div class="card md:flex">
       <div class="w-full md:w-1/3 xl:w-1/5 px-5 flex flex-col justify-between">
         <div class="img-profile">
-          <img :src="`${data.image.url}`" alt="Foto de Ana" />
+          <img :src="`${data.image.url}`" alt="Foto de Ana" :width="data.image.width" :height="data.image.height"/>
         </div>
         <div
           class="px-6 sm:px-0 pw-full flex justify-around lg:justify-between mt-4 mb-3 lg:mb-0 text-lg"
@@ -41,19 +41,19 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div class="card">
           <div class="card-image">
-            <img src="@/assets/img/logic-design.png" alt="Text alt" />
+            <img src="@/assets/img/logic-design.png" alt="Text alt" width="206" height="153"/>
           </div>
           <p class="text-center">Diseño lógico de aplicaciones</p>
         </div>
         <div class="card">
           <div class="card-image">
-            <img src="@/assets/img/logic-design.png" alt="Text alt" />
+            <img src="@/assets/img/logic-design.png" alt="Text alt" width="206" height="153"/>
           </div>
           <p class="text-center">Diseño lógico de aplicaciones</p>
         </div>
         <div class="card">
           <div class="card-image">
-            <img src="@/assets/img/logic-design.png" alt="Text alt" />
+            <img src="@/assets/img/logic-design.png" alt="Text alt" width="206" height="153"/>
           </div>
           <p class="text-center">Diseño lógico de aplicaciones</p>
         </div>
@@ -63,13 +63,16 @@
 </template>
 <script>
 // @ is an alias to /src
-
+import { VueSimpleMarkdown } from 'vue-simple-markdown'
 export default {
   name: 'About',
   data(){
     return{
       data: null
     }
+  },
+  components: {
+    VueSimpleMarkdown,
   },
   async mounted(){
     this.$parent.titleName = "Sobre mí"

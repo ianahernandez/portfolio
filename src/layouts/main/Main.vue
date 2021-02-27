@@ -2,7 +2,7 @@
   <div>
     <div class="flex">
       <vertical-nav-menu :menuExpanded="menuExpanded"
-                        v-hammer:swipe.left="collapseExpand" @closeMenu="collapseExpand"/>
+                         @closeMenu="collapseExpand"/>
         <div class="content-layout ml-0 lg:ml-56">
           <!-- Header -->
           <div class="header md:mt-4">
