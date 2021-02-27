@@ -15,12 +15,12 @@ import './assets/css/tailwind.css'
 import './assets/css/icons.css'
 
 // Vuejs - Vue wrapper for hammerjs
-import { VueHammer } from "vue2-hammer";
+/* import { VueHammer } from "vue2-hammer";
 Vue.use(VueHammer);
 
 VueHammer.config.swipe = {
   threshold: 200
-};
+}; */
 
 /* Vue markdown */
 import 'vue-simple-markdown/dist/vue-simple-markdown.css'
