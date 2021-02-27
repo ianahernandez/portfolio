@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import VueSimpleMarkdown from 'vue-simple-markdown'
+//import VueSimpleMarkdown from 'vue-simple-markdown'
 
 
 /* Styles */
@@ -25,13 +25,14 @@ VueHammer.config.swipe = {
 /* Vue markdown */
 import 'vue-simple-markdown/dist/vue-simple-markdown.css'
  
-Vue.use(VueSimpleMarkdown)
+//Vue.use(VueSimpleMarkdown)
 
 
 
 /* Vue Resource */
 import VueResource from 'vue-resource';
 Vue.use(VueResource);
+
 Vue.http.options.root = process.env.VUE_APP_URL;
 
 Vue.config.productionTip = false

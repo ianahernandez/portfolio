@@ -61,7 +61,11 @@
 </template>
 <script>
 import "@/assets/scss/project.scss";
+import { VueSimpleMarkdown } from 'vue-simple-markdown'
 export default {
-  props: ["data"]
+  props: ["data"],
+  components:{
+    VueSimpleMarkdown,
+  }
 };
 </script>
