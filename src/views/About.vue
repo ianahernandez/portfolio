@@ -1,6 +1,6 @@
 <template>
   <div id="about" class="content" v-if="data">
-    <div class="card md:flex">
+    <div class="card md:flex" data-aos="zoom-in" data-aos-duration="1000">
       <div class="w-full md:w-1/3 xl:w-1/5 px-5 flex flex-col justify-between">
         <div class="img-profile">
           <img :src="`${data.image.url}`" alt="Foto de Ana" :width="data.image.width" :height="data.image.height"/>
@@ -37,21 +37,21 @@
       </div>
     </div>
     <div class="mt-4">
-      <h3 class="title my-5">Lo que hago</h3>
+      <h3 class="title my-5" data-aos="fade-right" data-aos-duration="1000">Lo que hago</h3>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="card">
+        <div class="card"  data-aos="zoom-in" data-aos-duration="1000">
           <div class="card-image">
             <img src="@/assets/img/logic-design.png" alt="Text alt" width="206" height="153"/>
           </div>
           <p class="text-center">Diseño lógico de aplicaciones</p>
         </div>
-        <div class="card">
+        <div class="card" data-aos="zoom-in" data-aos-duration="1000">
           <div class="card-image">
             <img src="@/assets/img/logic-design.png" alt="Text alt" width="206" height="153"/>
           </div>
           <p class="text-center">Diseño lógico de aplicaciones</p>
         </div>
-        <div class="card">
+        <div class="card" data-aos="zoom-in" data-aos-duration="1000">
           <div class="card-image">
             <img src="@/assets/img/logic-design.png" alt="Text alt" width="206" height="153"/>
           </div>

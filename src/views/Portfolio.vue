@@ -2,13 +2,19 @@
   <div class="content">
     <div class="mb-8 p-3">
       <VueSlickCarousel v-if="categories.length" v-bind="carouseLSettings">
-        <ItemCarousel v-for="category in categories" :key="category.id" :text="category.name" :foto="category.image.url"></ItemCarousel>
+        <ItemCarousel  data-aos="fade-right" data-aos-duration="1000" 
+        v-for="category in categories" :key="category.id" 
+        :isActive="category.id == selectedCategory" :text="category.name" 
+        :foto="category.image.url"
+        v-on:select="filterCategory(category.id)"
+        ></ItemCarousel>
       </VueSlickCarousel>
     </div>
     <section class="flex portfolio">
       <div class="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
-        <div class="card overflow-hidden" v-for="(item,index) in data" :key="index">
-          <span v-if="!item.isHover" class="card-no-hover tag tag-left">{{item.categories[0].name}}</span>
+        <div class="card overflow-hidden" v-for="(item,index) in dataFiltered" 
+        :key="index" data-aos="zoom-in" data-aos-duration="1000">
+          <span class="card-no-hover tag tag-left">{{item.categories[0].name}}</span>
           <div class="card-image h-32">
             <img :src="item.image.url" :alt="`Logo de ${item.image.alternativeText}`" />
           </div>
@@ -48,7 +54,7 @@
       <template v-slot:content>
         <VueSlickCarousel class="mx-3 mb-4" v-bind="carouselGallery">
           <div class="md:p-4" v-for="(image) in projectSelected.gallery" :key="image.id">
-            <img class="rounded-lg" :src="`${$store.state.staticPath}${image.formats.large.url}`" :alt="image.alternativeText" />
+            <img class="rounded-lg" :src="image.formats.large.url" :alt="image.alternativeText" />
             <p class="mt-2">{{image.caption}}</p>
           </div>
         </VueSlickCarousel>
@@ -68,87 +74,6 @@ export default {
   name: "Portfolio",
   data() {
     return {
-      /* data: [
-        {
-          category: "Marketplace",
-          name: "Suimap",
-          img: "https://suimap.com/web/image/res.company/1/logo?unique=87ab3c9",
-          imageBanner:
-            "https://suimap.com/web/image/32580/montaje%20front%20(1).png",
-          description: `Desarrollamos una aplicación web de arquitectura cliente servidor, segura y escalable. Que cuenta con intranet, en la
-                      que los usuarios, de acuerdo a su nivel de acceso puede gestionar datos, realizar transacciones y hacer seguimiento
-                      de las mismas. Portal web de comercio electrónico, con diferentes plataformas de pago integradas, blog, mensajería entre otros.`,
-          about:
-            "Suimap  es el primer marketplace en su tipo que le brinda a los negocios la posibilidad de gestionar sus ventas on-line y off-line de forma unificada. Podrán emplear campañas de marketing, realizar promociones e integrar su logística sin necesidad de acudir a otras herramientas. ¡Todo desde un solo lugar! Mucho más que un centro comercial on-line, es todo un ecosistema de ventas inteligente.",
-          technologies: ["HTML", "CSS", "Javascript", "JQuery"],
-          isHover: false,
-          url: "https://suimap.com",
-          features: [
-            {
-              title: "Sistema de gestión",
-              description:
-                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi obcaecati, at animi distinctio necessitatibus, iste labore aspernatur natus dolor temporibus, incidunt ea voluptates unde! Molestiae numquam omnis sint officiis ipsam."
-            },
-            {
-              title: "Geolocalización",
-              description:
-                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi obcaecati, at animi distinctio necessitatibus, iste labore aspernatur natus dolor temporibus, incidunt ea voluptates unde! Molestiae numquam omnis sint officiis ipsam."
-            },
-            {
-              title: "Chat en vivo",
-              description:
-                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi obcaecati, at animi distinctio necessitatibus, iste labore aspernatur natus dolor temporibus, incidunt ea voluptates unde! Molestiae numquam omnis sint officiis ipsam."
-            },
-            {
-              title: "UI",
-              description:
-                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi obcaecati, at animi distinctio necessitatibus, iste labore aspernatur natus dolor temporibus, incidunt ea voluptates unde! Molestiae numquam omnis sint officiis ipsam."
-            }
-          ],
-          contributions: [
-            {
-              title: "Desarrollo frontend",
-              description:
-                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi obcaecati, at animi distinctio necessitatibus."
-            },
-            {
-              title: "Desarrollo Backend",
-              description:
-                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi obcaecati, at animi distinctio necessitatibus."
-            },
-            {
-              title: "Diseño lógico",
-              description:
-                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi obcaecati, at animi distinctio necessitatibus."
-            }
-          ],
-          gallery: [
-            {
-              title: "Título 1",
-              url:
-                "https://suimap.com/web/image/20948/banner%20crea%20tu%20tienda-05.jpg"
-            },
-            {
-              title: "Título 2",
-              url:
-                "https://suimap.com/web/image/37401/suimap-crea-tu-propio-ecommerce1.png"
-            },
-            {
-              title: "Título 3",
-              url:
-                "https://suimap.com/web/image/20952/banner%20crea%20tu%20tienda-06.jpg"
-            }
-          ]
-        },
-        {
-          category: "E-commerce",
-          name: "Distribuidores IDP",
-          img: "https://suimap.com/web/image/res.company/1/logo?unique=87ab3c9",
-          description: "Lorem ipsum...",
-          technologies: ["HTML", "CSS", "Javascript", "JQuery"],
-          isHover: false
-        }
-      ], */
       data: [],
       carouseLSettings: {
         dots: false,
@@ -199,10 +124,16 @@ export default {
         slidesToScroll: 1,
         touchThreshold: 2,
       },
+      selectedCategory: null,
       openModalProject: false,
       openModalGallery: false,
       projectSelected: null
     };
+  },
+  computed: {
+    dataFiltered(){
+      return this.selectedCategory ? this.data.filter(el => el.categories[0].id == this.selectedCategory) : this.data;
+    }
   },
   components: {
     VueSlickCarousel,
@@ -218,12 +149,15 @@ export default {
     openGallery(item) {
       this.projectSelected = item;
       this.openModalGallery = true;
+    },
+    filterCategory(id){
+      this.selectedCategory = id;
     }
   },
   async mounted() {
     this.$parent.titleName = "Portafolio";
-    this.data = await this.$store.dispatch('getProjects')
     this.categories = await this.$store.dispatch('getCategories')
+    this.data = await this.$store.dispatch('getProjects')
   }
 };
 </script>

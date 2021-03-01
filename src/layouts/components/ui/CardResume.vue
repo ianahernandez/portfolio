@@ -6,7 +6,7 @@
       <p class="text-sm">{{description}}</p>
       <div v-if="dateFrom" class="text-xs"><span class="text-gray-700">{{dateFrom | dateShort}} - {{actual ? "Actualidad": dateTo | dateShort}}</span></div>
       <div v-if="date" class="text-xs"><span class="text-gray-700">{{date | dateFull }}  {{duration ? ` - ${duration} horas`: ''  }}</span></div>
-      <a v-if="credential" :href="credential" class="text-violet text-xs hover:text-primary-500" target="_blank">Ver credencial</a>
+      <a v-if="credential" :href="credential" class="text-violet text-xs hover:text-primary-500" target="_blank" rel="noreferrer">Ver credencial</a>
     </div>
   </div>
 </template>

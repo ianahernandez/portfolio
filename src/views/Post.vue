@@ -41,14 +41,14 @@
           </div>
         </div>
 
-        <div class="my-10">
+        <!-- <div class="my-10">
           <h2 class="subtitle">{{ data.comments && data.comments.length ? `Comentarios  (${data.comments.length})` : "No hay comentarios" }}</h2>
           <div class="bg-white rounded-lg max-w-xl p-3 my-4" v-for="comment in data.comments" :key="comment.id">
             <p class="text-gray-800 text-sm mb-3">{{comment.content}}</p>
             <p class="text-gray-800 text-xs">Por <strong>{{comment.name}}</strong></p>
             <small class="text-gray-700">{{comment.date}}</small>
           </div>
-        </div>
+        </div> -->
 
         <hr>
 
@@ -71,9 +71,11 @@
         <h3 class="subtitle">Destacado</h3>
         <div class="card px-2">
           <div class="flex mb-4" v-for="post in relevant" :key="post.id">
-            <div class="w-32">
-              <img class="rounded" :src="post.imgThumb" :alt="post.title">
-              <div class="text-red-300 text-xs mt-1"><i class="icon-comment-alt"></i> <span class="font-bold text-red-300 "></span>{{post.comments}}</div>
+            <div class="w-24">
+              <img class="rounded" :src="post.image.url" :alt="post.title">
+              <div class="text-red-300 text-xs"><i class="icon-comment-alt"></i> <span class="font-bold text-sm text-red-300 "></span>
+                <DisqusCount class="text-red-300 " lang="es" shortname='ianahernandez' :identifier="`/blog/${post.slug}`" />
+              </div>
             </div>
             <div class="pl-3">
               <h2 class="heading-2 text-base">{{post.title}}</h2>
@@ -82,13 +84,13 @@
           </div>
         </div>
 
-        <div class="mt-4">
+        <!-- <div class="mt-4">
           <h3 class="subtitle">Recibir noticias</h3>
           <p class="text-sm my-2">
             It is a long established fact that a reader will be distracted by the
           </p>
           <button class="btn btn-primary m-auto"><i class="icon-message mr-2"></i> Suscribirme</button>
-        </div>
+        </div> -->
       </section>
     </div>
   </div>
@@ -96,71 +98,40 @@
 <script>
 import { VueSimpleMarkdown } from 'vue-simple-markdown'
 import { Disqus } from 'vue-disqus'
+import { DisqusCount } from 'vue-disqus'
 import "@/assets/scss/form.scss"
 
 export default {
   name: 'Post',
   data(){
     return{
-      /* data: {
-        id: 1,
-        title: "El home office",
-        imgThumb: "https://www.bizneo.com/blog/wp-content/uploads/2020/03/home-office.jpg",
-        img: "https://www.bizneo.com/blog/wp-content/uploads/2020/03/home-office.jpg",
-        shortDescription:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi obcaecati, at animi distinctio necessitatibus.",
-        text: `<h3 style="font-size: 1.5rem; font-weight: 700;">What is Lorem Ipsum?</h3>
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-              <h3 style="font-size: 1.5rem; font-weight: 700;">Why do we use it?</h3>
-              <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>`,
-        updatedAt: "Hace una semana",
-        date: "26 de enero de 2021",
-        author: "Ana Herández",
-        views: 21,
-        category: "Diseño UX/UI",
-        imageCredits: "Imagen de unsplash.com",
-        comments: [
-          {
-            id:2,
-            name: "José D' Amelio",
-            content: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's",
-            date: "26 de Enero de 2021 1:40am"
-          },
-          {
-            id:1,
-            name: "Katherin Hernández",
-            content: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's",
-            date: "21 de Octubre de 2020 8:40am"
-          }
-        ]
-      }, */
       data: {},
-      relevant: [
-        {
-          id: 1,
-          title: "Neomorfismo",
-          imgThumb: "https://www.adictosaltrabajo.com/wp-content/uploads/2020/04/Captura-de-pantalla-2020-04-20-a-las-10.22.48-300x208.png",
-          shortDescription:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi obcaecati, at animi distinctio necessitatibus.",
-          comments: 4,
-        },
-        {
-          id: 2,
-          title: "Buenas prácticas de UI/UX",
-          imgThumb: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRchUvVZvBkmhFXKdkXYxTpLv1wQqICqXtr8w&usqp=CAU",
-          shortDescription:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi obcaecati, at animi distinctio necessitatibus.",
-          comments: 72,
-        }
-      ]
+      relevant: []
     }
   },
   components: {
     VueSimpleMarkdown,
-    Disqus
+    Disqus,
+    DisqusCount
+  },
+  methods: {
+    verifyCounter() {
+      let postViewed = localStorage.postsViewed;
+      if(!postViewed){
+        localStorage.postsViewed = [this.data.id]
+        this.$store.dispatch('incrementView', { id: this.data.id })
+      } else if(postViewed && !postViewed.includes(this.data.id)){
+        localStorage.postsViewed = JSON.stringify([...JSON.parse(localStorage.postsViewed), this.data.id])
+        this.$store.dispatch('incrementView', { id: this.data.id })
+      }
+    }
   },
   async mounted(){
     let slug = this.$route.params.slug
     this.data = await this.$store.dispatch('getPostBySlug', { slug })
     this.$parent.titleName = this.data.title
-    console.log(this.data)
+    this.verifyCounter()
+    this.relevant = await this.$store.dispatch('getPostsRelevant')
   }
 }
 </script>

@@ -13,18 +13,28 @@
   }
 
   &-hover{
-    display: none;
+    @apply block absolute h-full w-full text-cream p-2;
+    visibility: hidden;
+    transform: rotateY(180deg);
+    background: transparent;
+    top: 0;
+    left: 0;
+    transition: transform ease-out 1.5s, visibility 200ms, background 500ms;
   }
 
   &:hover{
     .card-no-hover{
       display: none;
+      
+    }
+    .card-image{
+      opacity: 0.3;
+      transition: opacity 300ms;
     }
     .card-hover{
-      @apply block absolute h-full w-full text-cream p-2;
+      transform: rotateY(0deg);
+      visibility: visible;
       background: rgba($violet, 0.68);
-      top: 0;
-      left: 0;
     }
   }
 }
@@ -63,7 +73,7 @@
 
 .item-carousel{
   @apply flex flex-col justify-center items-center py-2 px-3 mb-1 rounded-md;
-  &:hover{
+  &:hover, &.active{
     @apply bg-white cursor-pointer;
     box-shadow: 2px 3px 12px -8px $primary;
   }
