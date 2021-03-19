@@ -192,7 +192,7 @@ export default {
         this.$store.dispatch("incrementView", { id: this.data.id });
       } else if (postViewed && !postViewed.includes(this.data.id)) {
         localStorage.postsViewed = JSON.stringify([
-          ...JSON.parse(localStorage.postsViewed),
+          JSON.parse(localStorage.postsViewed),
           this.data.id
         ]);
         this.$store.dispatch("incrementView", { id: this.data.id });
