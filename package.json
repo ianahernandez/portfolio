@@ -15,6 +15,7 @@
     "tailwindcss": "^1.6.2",
     "vue": "^2.6.11",
     "vue-disqus": "^4.0.1",
+    "vue-meta": "^2.4.0",
     "vue-resource": "^1.5.1",
     "vue-router": "^3.2.0",
     "vue-simple-markdown": "^1.1.4",
