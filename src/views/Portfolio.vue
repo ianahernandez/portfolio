@@ -14,7 +14,7 @@
       <div class="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
         <div class="card overflow-hidden" v-for="(item,index) in dataFiltered" 
         :key="index" data-aos="zoom-in" data-aos-duration="1000">
-          <span class="card-no-hover tag tag-left">{{item.categories[0].name}}</span>
+          <span class="card-no-hover tag tag-left">{{item.category.name}}</span>
           <div class="card-image h-32">
             <img :src="item.image.url" :alt="`Logo de ${item.image.alternativeText}`" />
           </div>

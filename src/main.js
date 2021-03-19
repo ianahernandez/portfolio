@@ -3,6 +3,8 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import AOS from 'aos';
+import VueMeta from 'vue-meta'
+
 import 'aos/dist/aos.css';
 
 
@@ -29,7 +31,8 @@ import 'vue-simple-markdown/dist/vue-simple-markdown.css'
 /* Vue AOS */
 AOS.init()
 
-
+/* Vue meta tags */
+Vue.use(VueMeta)
 
 /* Vue Resource */
 import VueResource from 'vue-resource';
@@ -51,6 +54,28 @@ Vue.filter('dateFull', function (value) {
     return value;
   }
   
+})
+
+Vue.filter('dateTime', function (value) {
+  if (!value) return ''
+  try {
+    let ndate = new Date(value)
+    let dateFormatted = new Intl.DateTimeFormat('es-ES', { month: 'long', day: 'numeric', year: 'numeric' }).format(ndate)
+    return dateFormatted;
+  } catch {
+    return value;
+  }
+  
+})
+Vue.filter('dateTimeFull', function (value) {
+  if (!value) return ''
+  try {
+    let ndate = new Date(value)
+    let dateFormatted = new Intl.DateTimeFormat('es-VE', { dateStyle: 'full', timeStyle: 'short' }).format(ndate)
+    return dateFormatted;
+  } catch {
+    return value;
+  }
 })
 
 Vue.filter('dateShort', function (value) {

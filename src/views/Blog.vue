@@ -12,7 +12,7 @@
                 <h2 class="heading-2">{{post.title}}</h2>
                 <span class="tag text-sm h-5 px-2">{{post.category.name}}</span>
               </div>
-              <span class="text-xs text-gray-700">{{post.updated_at}}</span>
+              <span class="text-xs text-gray-700">{{post.updated_at | dateTime}}</span>
               <p class="text-sm line-clamp-2 mb-2">{{post.shortDescription}}</p>
               <div class="flex justify-between">
                 <span class="text-xs text-gray-700">Por {{post.updated_by.firstname}} {{post.updated_by.lastname}}</span>
@@ -75,6 +75,9 @@ export default {
   },
   components: {
     DisqusCount
+  },
+  metaInfo: {
+    title: 'Blog | Ana Hernández'
   },
   async mounted(){
     this.$parent.titleName = "Blog"
