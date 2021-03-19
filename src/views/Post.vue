@@ -11,31 +11,31 @@
             <small>Publicado el {{data.updated_at | dateTimeFull}}</small>
           </p>
           <div class="ml-auto">
-            <a
+            <button
               @click="shareFacebookPost()"
               class="btn-icon text-gray-500 hover:text-primary-500"
               aria-label="Icon facebook"
               target="_blank"
             >
               <i class="icon-facebook" />
-            </a>
+            </button>
 
-            <a
+            <button
               @click="tweetPost()"
               target="_blank"
               class="btn-icon text-gray-500 hover:text-primary-500"
               aria-label="Icon twitter"
             >
               <i class="icon-twitter" />
-            </a>
+            </button>
 
-            <a
+            <button
               @click="shareLinkedin()"
               class="btn-icon text-gray-500 hover:text-primary-500"
               aria-label="Icon linkedin"
             >
               <i class="icon-linkedin" />
-            </a>
+            </button>
           </div>
         </div>
 
@@ -43,7 +43,7 @@
           <div class="my-4">
             <img
               class="w-full rounded-lg"
-              :src="`${$store.state.staticPath}${data.image.url}`"
+              :src="data.image.url"
               :alt="data.image.alternativeText"
             />
             <span class="text-gray-700 text-sm">{{data.image.caption}}</span>
@@ -55,27 +55,31 @@
         <div class="w-full my-10">
           <p class="heading-2 text-center">¿Te gustó?, ¡Comparte!</p>
           <div class="mt-3 text-center">
-            <a
-              href="#"
+            <button
+              @click="shareFacebookPost()"
               class="btn-icon text-gray-500 hover:text-primary-500"
               aria-label="Icon facebook"
+              target="_blank"
             >
               <i class="icon-facebook" />
-            </a>
-            <a
-              href="#"
+            </button>
+
+            <button
+              @click="tweetPost()"
+              target="_blank"
               class="btn-icon text-gray-500 hover:text-primary-500"
               aria-label="Icon twitter"
             >
               <i class="icon-twitter" />
-            </a>
-            <a
-              href="#"
+            </button>
+
+            <button
+              @click="shareLinkedin()"
               class="btn-icon text-gray-500 hover:text-primary-500"
               aria-label="Icon linkedin"
             >
               <i class="icon-linkedin" />
-            </a>
+            </button>
           </div>
         </div>
 
