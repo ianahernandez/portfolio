@@ -150,15 +150,20 @@ export default {
     return {
       meta: [
         {property: 'og:title', content: this.metaInfoData.title},
-        {property: 'og:site_name', content: 'Ana Hernándesz | Developer'},
+        {property: 'og:site_name', content: 'Ana Hernández | Developer'},
         {property: 'og:type', content: 'article'},
-        {property: 'og:url', content: 'url.com'},
-        {property: 'og:image', content: this.metaInfoData.image},
+        {property: 'og:url', content: window.location.href},
+        {property: 'og:image', content: this.metaInfoData.image.url},
+        {property: 'og:image:type', content: this.metaInfoData.image.mime},
         {property: 'og:description', content: this.metaInfoData.description},
         {property: 'twitter:card', content: 'summary_large_image'},
+        {property: 'twitter:domain', content: 'ianahernandez.tech'},
+        {property: 'twitter:url', content: window.location.href},
+        {property: 'twitter:title', content: this.metaInfoData.title},
+        {property: 'twitter:description', content: this.metaInfoData.description},
+        {property: 'twitter:image', content: this.metaInfoData.image.url},
         {property: 'twitter:site', content: '@ianahernandez'},
-        {property: 'twitter:creator', content: '@ianahernandez'}
-
+        {property: 'twitter:creator', content: '@ianahernandez'},
       ],
       title: this.metaInfoData.title,
       titleTemplate: '%s | Ana Hernández'
@@ -179,7 +184,7 @@ export default {
       return {
         title: this.data.title,
         description: this.data.shortDescription,
-        image: this.data.image? this.data.image.url: "",
+        image: this.data.image? this.data.image: "",
       }
     }
   },
