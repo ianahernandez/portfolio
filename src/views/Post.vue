@@ -149,12 +149,13 @@ export default {
   metaInfo() {
     return {
       meta: [
+        {vmid: 'description', name: 'description', content: this.metaInfoData.description},
         {vmid: 'og:title', property: 'og:title', content: this.metaInfoData.title},
         {vmid: 'og:site_name', property: 'og:site_name', content: 'Ana Hernández | Developer'},
         {vmid: 'og:type', property: 'og:type', content: 'article'},
         {vmid: 'og:url', property: 'og:url', content: window.location.href},
-        {vmid: 'og:image', property: 'og:image', content: this.metaInfoData.image.url},
-        {vmid: 'og:image:type', property: 'og:image:type', content: this.metaInfoData.image.mime},
+        {vmid: 'og:image', property: 'og:image', content: "https://res.cloudinary.com/ianahernandez/image/upload/v1614308563/user_13_1537ecda05.jpg"},
+        {vmid: 'og:image:type', property: 'og:image:type', content: "image/jpeg"},
         {vmid: 'og:description', property: 'og:description', content: this.metaInfoData.description},
         {vmid: 'twitter:card', property: 'twitter:card', content: 'summary_large_image'},
         {vmid: 'twitter:domain', property: 'twitter:domain', content: 'ianahernandez.tech'},
