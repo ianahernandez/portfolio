@@ -1,6 +1,6 @@
 <template>
   <div class="blog">
-    <div class="flex">
+    <div class="flex" v-if="data.length">
       <section class="posts w-full md:w-8/12 md:pr-4">
         <article v-for="post in data" :key="post.id" class="card my-4 p-2" 
         data-aos="fade-up" data-aos-duration="1000" 
@@ -31,7 +31,7 @@
       </section>
       <section class="relevant hidden md:block md:w-4/12 pl-4">
         <h3 class="subtitle">Destacado</h3>
-        <div class="card px-2">
+        <div :class="`card px-2 ${relevant.length ? '' : 'loader h-40'}`">
           <div class="flex mb-4" v-for="post in relevant" :key="post.id">
             <div class="w-24">
               <img class="rounded" :src="post.image.url" :alt="post.title">
@@ -54,6 +54,8 @@
           <button class="btn btn-primary m-auto"><i class="icon-message mr-2"></i> Suscribirme</button>
         </div> -->
       </section>
+    </div>
+    <div v-else="" class="loader loader-screen">
     </div>
   </div>
 </template>

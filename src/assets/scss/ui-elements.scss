@@ -165,13 +165,17 @@
   }
   &-body{
     @apply bg-cream rounded-lg max-w-full w-11/12;
-    height: fit-content;
+    max-height: 90vh;
+    overflow-y: auto;
   }
   &-close{
     @apply text-lg px-2;
   }
   &-content{
     @apply p-3;
+  }
+  &-center{
+    margin-top: calc(50vh - 200px);
   }
 
 }

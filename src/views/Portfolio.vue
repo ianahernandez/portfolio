@@ -1,39 +1,49 @@
 <template>
   <div class="content">
-    <div class="mb-8 p-3">
-      <VueSlickCarousel v-if="categories.length" v-bind="carouseLSettings">
-        <ItemCarousel  data-aos="fade-right" data-aos-duration="1000" 
-        v-for="category in categories" :key="category.id" 
-        :isActive="category.id == selectedCategory" :text="category.name" 
-        :foto="category.image.url"
-        v-on:select="filterCategory(category.id)"
-        ></ItemCarousel>
-      </VueSlickCarousel>
-    </div>
-    <section class="flex portfolio">
-      <div class="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
-        <div class="card overflow-hidden" v-for="(item,index) in dataFiltered" 
-        :key="index" data-aos="zoom-in" data-aos-duration="1000">
-          <span class="card-no-hover tag tag-left">{{item.category.name}}</span>
-          <div class="card-image h-32">
-            <img :src="item.image.url" :alt="`Logo de ${item.image.alternativeText}`" />
+    <template v-if="data.length">
+      <div class="mb-8 p-3">
+        <VueSlickCarousel v-if="categories.length" v-bind="carouseLSettings">
+          <div class="mr-3 py-2" v-on:click="filterCategory(-1)">
+            <div :class="`item-carousel ${ selectedCategory == -1 ? 'active' : ''} transition duration-500 ease-in-out` " @click="$emit('select')">
+              <img src="@/assets/img/categories/all.png" alt="Todo">
+              <p>Todo</p>
+            </div>
           </div>
-          <p class="text-center">{{item.subtitle}}</p>
-          <div class="card-hover">
-            <h2 class="subtitle text-cream">{{item.name? item.name:""}}</h2>
-            <p class="text-cream line-clamp-3">{{item.shortDescription}}</p>
-            <div class="absolute bottom-0 right-0">
-              <button class="btn btn-light btn-sm" @click="openGallery(item)">
-                <i class="icon-picture"></i>
-                Galería
-              </button>
-              <button class="btn btn-dark btn-sm pt-1" @click="openProject(item)">Ver más ›</button>
+  
+          <ItemCarousel  data-aos="fade-right" data-aos-duration="1000" 
+          v-for="category in categories" :key="category.id" 
+          :isActive="category.id == selectedCategory" :text="category.name" 
+          :foto="category.image.url"
+          v-on:select="filterCategory(category.id)"
+          ></ItemCarousel>
+        </VueSlickCarousel>
+      </div>
+      <section class="flex portfolio">
+        <div class="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div class="card overflow-hidden" v-for="(item,index) in dataFiltered" 
+          :key="index" data-aos="zoom-in" data-aos-duration="1000">
+            <span v-if="item.category" class="card-no-hover tag tag-left">{{item.category.name}}</span>
+            <div class="card-image h-32">
+              <img :src="item.image.url" :alt="`Logo de ${item.image.alternativeText}`" />
+            </div>
+            <p class="text-center">{{item.subtitle}}</p>
+            <div class="card-hover">
+              <h2 class="subtitle text-cream">{{item.name? item.name:""}}</h2>
+              <p class="text-cream line-clamp-3">{{item.shortDescription}}</p>
+              <div class="absolute bottom-0 right-0">
+                <button class="btn btn-light btn-sm" @click="openGallery(item)">
+                  <i class="icon-picture"></i>
+                  Galería
+                </button>
+                <button class="btn btn-dark btn-sm pt-1" @click="openProject(item)">Ver más ›</button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-
+      </section>
+    </template>
+    <div v-else="" class="loader loader-screen">
+    </div>
     <modal
       v-if="projectSelected"
       :title="projectSelected.name"
@@ -124,7 +134,7 @@ export default {
         slidesToScroll: 1,
         touchThreshold: 2,
       },
-      selectedCategory: null,
+      selectedCategory: -1,
       openModalProject: false,
       openModalGallery: false,
       projectSelected: null
@@ -132,7 +142,7 @@ export default {
   },
   computed: {
     dataFiltered(){
-      return this.selectedCategory ? this.data.filter(el => el.categories[0].id == this.selectedCategory) : this.data;
+      return this.selectedCategory != -1  ? this.data.filter(el => el.categories[0].id == this.selectedCategory) : this.data;
     }
   },
   components: {
@@ -157,6 +167,7 @@ export default {
   async mounted() {
     this.$parent.titleName = "Portafolio";
     this.categories = await this.$store.dispatch('getCategories')
+    this.$parent.loading = false;
     this.data = await this.$store.dispatch('getProjects')
   }
 };

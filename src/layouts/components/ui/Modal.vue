@@ -3,7 +3,7 @@
     <div :class="`modal-body ${classes}`" data-aos="zoom-in" data-aos-duration="1000" >
       <div class="modal-header">
         <h2 class="title">{{title}}</h2>
-        <button class="btn-icon modal-close" @click="$emit('update:show',false)">&times;</button>
+        <button v-if="!hideClose" class="btn-icon modal-close" @click="$emit('update:show',false)">&times;</button>
       </div>
       <div class="modal-content">
         <slot name="content"></slot>
@@ -15,7 +15,7 @@
 </template>
 <script>
 export default {
-  props: ["title", "show", "classes"],
+  props: ["title", "show", "classes", "hideClose"],
 }
 
 </script>

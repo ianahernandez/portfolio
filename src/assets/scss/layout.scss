@@ -20,6 +20,7 @@ body{
 }
 .content{
   @apply mt-8;
+  min-height: calc(100vh - 50px);
 }
 @media (max-width: 600px) {
   .content-layout{
@@ -32,6 +33,12 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
+  &-screen{
+    height: calc(100vh - 200px);
+    &::before{
+      background: transparent !important;
+    }
+  }
 }
 
 .loader::before{
