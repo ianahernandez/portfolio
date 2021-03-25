@@ -30,7 +30,10 @@
 p, span{
   @apply text-left text-gray-dark;
 }
-
+.img-rectangle{
+  max-height: 150px;
+  margin-bottom: 1rem;
+}
 /* .vue-simple-markdown, .markdown-body{
   font-family: 'Rubik', sans-serif;
 } */
