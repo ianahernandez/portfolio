@@ -5,11 +5,11 @@
       Acerca de
     </h3>
     <div class="md:flex banner">
-      <div class="md:w-1/2">
+      <div class="md:w-1/2 py-3 pl-3">
         <vue-simple-markdown class="mx-4" :source="data.about"></vue-simple-markdown>
       </div>
       <div class="w-full md:w-1/2">
-        <img v-if="data.imageBanner" :src="`${data.imageBanner.formats.medium.url}`" :alt="data.alternativeText" />
+        <img v-if="data.imageBanner" :src="`${data.imageBanner.formats && data.imageBanner.formats.medium ? data.imageBanner.formats.medium.url : data.imageBanner.url}`" :alt="data.alternativeText" />
       </div>
     </div>
 
