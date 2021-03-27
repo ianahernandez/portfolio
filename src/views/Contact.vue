@@ -98,6 +98,30 @@ import "@/assets/scss/form.scss";
 
 export default {
   name: "Contact",
+  metaInfo() {
+    return {
+      meta: [
+        {vmid: 'description', name: 'description', content: "Me gusta conectar con personas y comunidades que estén haciendo cosas increíbles. Contáctame si crees que puedo ser parte de tu proyecto o comunidad."},
+        {vmid: 'og:title', property: 'og:title', content: "Contacta a Ana Hernández"},
+        {vmid: 'og:site_name', property: 'og:site_name', content: 'Ana Hernández | Developer'},
+        {vmid: 'og:type', property: 'og:type', content: 'website'},
+        {vmid: 'og:url', property: 'og:url', content: window.location.href},
+        {vmid: 'og:image', property: 'og:image', content: "https://res.cloudinary.com/ianahernandez/image/upload/v1616821727/banner_contacto_23bea4dba9.png"},
+        {vmid: 'og:image:type', property: 'og:image:type', content: "image/png"},
+        {vmid: 'og:description', property: 'og:description', content: "Me gusta conectar con personas y comunidades que estén haciendo cosas increíbles. Contáctame si crees que puedo ser parte de tu proyecto o comunidad."},
+        {vmid: 'twitter:card', property: 'twitter:card', content: 'summary_large_image'},
+        {vmid: 'twitter:domain', property: 'twitter:domain', content: 'ianahernandez.tech'},
+        {vmid: 'twitter:url', property: 'twitter:url', content: window.location.href},
+        {vmid: 'twitter:title', property: 'twitter:title', content: "Contacta a Ana Hernández"},
+        {vmid: 'twitter:description', property: 'twitter:description', content: "Me gusta conectar con personas y comunidades que estén haciendo cosas increíbles. Contáctame si crees que puedo ser parte de tu proyecto o comunidad."},
+        {vmid: 'twitter:image', property: 'twitter:image', content: "https://res.cloudinary.com/ianahernandez/image/upload/v1616821727/banner_contacto_23bea4dba9.png"},
+        {vmid: 'twitter:site', property: 'twitter:site', content: '@ianahernandez'},
+        {vmid: 'twitter:creator', property: 'twitter:creator', content: '@ianahernandez'},
+      ],
+      title: "Contacto",
+      titleTemplate: '%s | Ana Hernández'
+    }
+  },
   data() {
     return {
       data: {

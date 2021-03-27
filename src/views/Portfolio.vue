@@ -82,6 +82,30 @@ import "@/assets/css/carousel.css";
 
 export default {
   name: "Portfolio",
+  metaInfo() {
+    return {
+      meta: [
+        {vmid: 'description', name: 'description', content: "A través de estos proyectos, muestro un poco el resultado de mis aportes individuales y como parte de un equipo de desarrollo. Desempeñando diversos roles y utilizando variedad de tecnologías."},
+        {vmid: 'og:title', property: 'og:title', content: "Portafolio de Ana Hernández"},
+        {vmid: 'og:site_name', property: 'og:site_name', content: 'Ana Hernández | Developer'},
+        {vmid: 'og:type', property: 'og:type', content: 'website'},
+        {vmid: 'og:url', property: 'og:url', content: window.location.href},
+        {vmid: 'og:image', property: 'og:image', content: "https://res.cloudinary.com/ianahernandez/image/upload/v1616821731/banner_portfolio_94eb657e26.png"},
+        {vmid: 'og:image:type', property: 'og:image:type', content: "image/png"},
+        {vmid: 'og:description', property: 'og:description', content: "A través de estos proyectos, muestro un poco el resultado de mis aportes individuales y como parte de un equipo de desarrollo. Desempeñando diversos roles y utilizando variedad de tecnologías."},
+        {vmid: 'twitter:card', property: 'twitter:card', content: 'summary_large_image'},
+        {vmid: 'twitter:domain', property: 'twitter:domain', content: 'ianahernandez.tech'},
+        {vmid: 'twitter:url', property: 'twitter:url', content: window.location.href},
+        {vmid: 'twitter:title', property: 'twitter:title', content: "Portafolio de Ana Hernández"},
+        {vmid: 'twitter:description', property: 'twitter:description', content: "A través de estos proyectos, muestro un poco el resultado de mis aportes individuales y como parte de un equipo de desarrollo. Desempeñando diversos roles y utilizando variedad de tecnologías."},
+        {vmid: 'twitter:image', property: 'twitter:image', content: "https://res.cloudinary.com/ianahernandez/image/upload/v1616821731/banner_portfolio_94eb657e26.png"},
+        {vmid: 'twitter:site', property: 'twitter:site', content: '@ianahernandez'},
+        {vmid: 'twitter:creator', property: 'twitter:creator', content: '@ianahernandez'},
+      ],
+      title: "Portafolio",
+      titleTemplate: '%s | Ana Hernández'
+    }
+  },
   data() {
     return {
       data: [],
@@ -143,7 +167,7 @@ export default {
   computed: {
     dataFiltered(){
       return this.selectedCategory != -1  ? this.data.filter(el => el.categories[0].id == this.selectedCategory) : this.data;
-    }
+    },
   },
   components: {
     VueSlickCarousel,
