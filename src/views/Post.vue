@@ -48,7 +48,7 @@
             />
             <span class="text-gray-700 text-sm">{{data.image.caption}}</span>
           </div>
-          <vue-simple-markdown class="text-gray-800 leading-8" :source="data.content"></vue-simple-markdown>
+          <vue-simple-markdown class="text-gray-800 leading-8" :postrender="parseLinks" :source="data.content"></vue-simple-markdown>
           <!-- <div class="text-gray-800 leading-8" v-html="data.content"></div> -->
         </article>
 
@@ -229,6 +229,10 @@ export default {
     },
     shareLinkedin(){
       window.open('http://www.linkedin.com/shareArticle?mini=true&url=' + this.urlShare + '&title=HolaTitulo','', '_blank, width=500, height=500, resizable=yes, scrollbars=yes'); return false;
+    },
+    parseLinks(html){
+      let exp = /href/gi
+      return html.replace(exp, 'rel="noopener" href')
     }
   },
   async mounted() {
