@@ -134,6 +134,7 @@
 
 .tag{
   @apply rounded-full;
+  min-width: 140px;
   background: $violet-light;
   box-shadow: 2px 2px 4px rgba($primary, 0.43);
   color: $violet;
