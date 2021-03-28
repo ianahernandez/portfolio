@@ -45,7 +45,7 @@
     <div v-else="" class="loader loader-screen">
     </div>
     <modal
-      v-if="projectSelected"
+      v-if="projectSelected && openModalProject"
       :title="projectSelected.name"
       :show.sync="openModalProject"
       @update:show="openModalProject = false"
@@ -64,8 +64,11 @@
       <template v-slot:content>
         <VueSlickCarousel class="mx-3 mb-4" v-bind="carouselGallery">
           <div class="md:p-4" v-for="(image) in projectSelected.gallery" :key="image.id">
-            <img class="rounded-lg" :src="image.formats.large.url" :alt="image.alternativeText" />
+            <img class="rounded-lg img-gallery" :src="image.formats.large ? image.formats.large.url: image.url" :alt="image.alternativeText" />
             <p class="mt-2">{{image.caption}}</p>
+          </div>
+          <div v-if="!projectSelected.gallery || !projectSelected.gallery.length">
+              <p class="m-auto py-4">No hay imágenes en la galería</p>
           </div>
         </VueSlickCarousel>
       </template>
@@ -196,3 +199,9 @@ export default {
   }
 };
 </script>
+<style lang="scss">
+  .img-gallery{
+    height: 420px;
+    margin: auto;
+  }
+</style>

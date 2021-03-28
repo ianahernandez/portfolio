@@ -1,6 +1,6 @@
 <template>
   <div :class="`modal ${show ? 'show' : ''}`">
-    <div :class="`modal-body ${classes}`" data-aos="zoom-in" data-aos-duration="1000" >
+    <div v-if="show" :class="`modal-body ${classes || ''}`" data-aos="zoom-in" data-aos-duration="1000">
       <div class="modal-header">
         <h2 class="title">{{title}}</h2>
         <button v-if="!hideClose" class="btn-icon modal-close" @click="$emit('update:show',false)">&times;</button>
