@@ -42,7 +42,7 @@
         <article v-if="data.image">
           <div class="my-4">
             <img
-              class="w-full rounded-lg"
+              class="w-full rounded-lg img-post"
               :src="data.image.url"
               :alt="data.image.alternativeText"
             />
@@ -280,4 +280,8 @@ export default {
 }
 
 /*--- end disqus css --*/
+/* Image post */
+.img-post{
+  max-height: 600px;
+}
 </style>
