@@ -13,7 +13,7 @@
       </div>
     </div>
 
-    <div class="project-item">
+    <div v-if="data.features.length" class="project-item">
       <h3 class="subtitle">
         <i class="icon-heart"></i>
         ¿Qué lo hace especial?
