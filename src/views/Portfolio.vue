@@ -169,7 +169,7 @@ export default {
   },
   computed: {
     dataFiltered(){
-      return this.selectedCategory != -1  ? this.data.filter(el => el.categories[0].id == this.selectedCategory) : this.data;
+      return this.selectedCategory != -1  ? this.data.filter(el => el.category.id == this.selectedCategory) : this.data;
     },
   },
   components: {

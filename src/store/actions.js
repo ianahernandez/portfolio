@@ -22,7 +22,7 @@ export default{
   },
 
   getCategories: async () => {
-    let data = await Vue.http.get(`categories`)
+    let data = await Vue.http.get(`categories?active=true`)
     return data.body
   },
 
