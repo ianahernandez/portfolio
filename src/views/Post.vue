@@ -1,7 +1,8 @@
 <template>
   <div class="post">
-    <div class="flex">
+    <div class="flex" v-if="data">
       <section class="posts w-full md:w-8/12 md:pr-4">
+        <h1 class="title pl-0">{{ data.title }}</h1>
         <div v-if="data.updated_by" class="mt-8 flex justify-between flex-wrap">
           <p class="text-gray-700">
             Por
@@ -136,6 +137,8 @@
         </div>-->
       </section>
     </div>
+    <div v-else="" class="loader loader-screen">
+    </div>
   </div>
 </template>
 <script>
@@ -172,7 +175,7 @@ export default {
   },
   data() {
     return {
-      data: {},
+      data: null,
       relevant: []
     };
   },
@@ -238,7 +241,7 @@ export default {
   async mounted() {
     let slug = this.$route.params.slug;
     this.data = await this.$store.dispatch("getPostBySlug", { slug });
-    this.$parent.titleName = this.data.title;
+    this.$parent.titleName = null;
     this.verifyCounter();
     this.relevant = await this.$store.dispatch("getPostsRelevant");
   }

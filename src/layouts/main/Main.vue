@@ -10,7 +10,7 @@
               <!-- <button class="text-gray-700"><i class="icon-globe mr-1"/>ES</button> -->
               <button class="nav-menu-button lg:hidden" @click="collapseExpand" aria-label="Desplegar menu"><i class="icon-bars"/></button>
               </div>
-            <h1 class="title">{{ titleName }}</h1>
+            <h1 v-if="titleName" class="title">{{ titleName }}</h1>
             <router-view/>
             <!-- Footer -->
             <div class="footer">
@@ -28,7 +28,7 @@ export default {
   data(){
     return{
       menuExpanded: false,
-      titleName: "Sobre mí",
+      titleName: null,
       loading: true,
     }
   },
