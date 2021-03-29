@@ -14,7 +14,7 @@
             <router-view/>
             <!-- Footer -->
             <div class="footer">
-              <span>Ana Hernández 2020</span>
+              <span>Ana Hernández {{new Date().getFullYear()}}</span>
               <span class="flex">Hecho a mano y con <i class="icon-heart text-violet ml-2"/></span>
             </div>
         </div>
