@@ -19,7 +19,7 @@
     background: transparent;
     top: 0;
     left: 0;
-    transition: transform ease-out 1.5s, visibility 200ms, background 500ms;
+    transition: transform ease-out 500ms, visibility 200ms, background 500ms;
   }
 
   &:hover{
@@ -134,7 +134,7 @@
 
 .tag{
   @apply rounded-full;
-  min-width: 140px;
+  white-space: nowrap;
   background: $violet-light;
   box-shadow: 2px 2px 4px rgba($primary, 0.43);
   color: $violet;
