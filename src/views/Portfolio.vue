@@ -201,7 +201,16 @@ export default {
 </script>
 <style lang="scss">
   .img-gallery{
-    height: 420px;
+    max-height: 420px;
     margin: auto;
   }
+  .slick-track{
+    display: flex !important;
+    .slick-slide{
+      display: flex !important;
+      align-self: center;
+      justify-content: center;
+    }
+  }
+  
 </style>
