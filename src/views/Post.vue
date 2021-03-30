@@ -1,15 +1,15 @@
 <template>
   <div class="post">
-    <div class="flex" v-if="data">
+    <h1 class="title pl-0  md:w-8/12">{{ data.title }}</h1>
+    <div class="flex" v-if="data.title">
       <section class="posts w-full md:w-8/12 md:pr-4">
-        <h1 class="title pl-0">{{ data.title }}</h1>
         <div v-if="data.updated_by" class="mt-8 flex justify-between flex-wrap">
           <p class="text-gray-700">
             Por
             <span
               class="text-gray-700"
             >{{data.updated_by.firstname}} {{data.updated_by.lastname}}</span> -
-            <small>Publicado el {{data.updated_at | dateTimeFull}}</small>
+            <small>Publicado el {{data.created_at | dateTimeFull}}</small>
           </p>
           <div class="ml-auto">
             <button
@@ -175,7 +175,7 @@ export default {
   },
   data() {
     return {
-      data: null,
+      data: {},
       relevant: []
     };
   },
@@ -186,9 +186,9 @@ export default {
     },
     metaInfoData() {
       return {
-        title: this.data.title,
-        description: this.data.shortDescription,
-        image: this.data.image? this.data.image: "",
+        title: this.data ? this.data.title: "",
+        description: this.data ? this.data.shortDescription: "",
+        image: this.data? this.data.image: "",
       }
     }
   },

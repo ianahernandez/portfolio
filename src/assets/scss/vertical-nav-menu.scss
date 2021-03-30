@@ -13,6 +13,9 @@
   &.menu-show{
     transform: translateX(0);
   }
+  &::-webkit-scrollbar {
+    width: 0;
+  }
 }
 
 .nav-menu-button{

@@ -3,13 +3,13 @@
     <div class="flex" v-if="data.length">
       <section class="posts w-full md:w-8/12 md:pr-4">
         <article v-for="post in data" :key="post.id" class="card my-4 p-2" 
-        data-aos="fade-up" data-aos-duration="1000" 
+        data-aos="fade-up" data-aos-duration="1000"
         @click="readMore(post.slug)">
           <div class="flex items-start">
-            <img class="img-thumb" :src="post.image.url" :alt="post.image.alternativeText">
+            <img class="img-thumb cursor-pointer" :src="post.image.url" :alt="post.image.alternativeText">
             <div class="pl-3 w-full">
               <div class="flex flex-col items-baseline md:flex-row md:justify-between">
-                <h2 class="heading-2">{{post.title}}</h2>
+                <h2 class="heading-2 cursor-pointer">{{post.title}}</h2>
                 <span class="tag text-sm h-5 px-2">{{post.category.name}}</span>
               </div>
               <span class="text-xs text-gray-700">{{post.updated_at | dateTime}}</span>
