@@ -96,7 +96,7 @@
         <hr />
 
         <div class="max-w-xl my-10 pb-8">
-          <Disqus shortname="ianahernandez" />
+          <Disqus shortname="ianahernandez" lang="es_ES"/>
           <!-- <h2 class="subtitle">Agrega un comentario</h2>
           <input type="text" class="w-full" placeholder="Tu nombre">
           <textarea class="w-full" name="content" id="" rows="10" placeholder="Comentario"></textarea>
