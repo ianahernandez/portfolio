@@ -44,6 +44,11 @@ const routes = [
         name: 'contact',
         component: () => import("@/views/Contact.vue"),
       },
+      {
+        path: '*',
+        name: 'notFound',
+        component: () => import("@/views/404.vue"),
+      },
     ]
   }
 ]

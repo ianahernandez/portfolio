@@ -51,7 +51,7 @@
       <p>{{data.technologies.map(el => el.name).join(", ")}}</p>
     </div>
 
-    <div class="w-full flex justify-center p-4">
+    <div v-if="data.url" class="w-full flex justify-center p-4">
       <a :href="data.url" class="btn btn-light" target="_blank">
         <i class="icon-globe"></i>
         Visitar {{data.name}}

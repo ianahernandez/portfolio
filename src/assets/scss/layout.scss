@@ -20,7 +20,7 @@ body{
 }
 .content{
   @apply mt-8;
-  min-height: calc(100vh - 50px);
+  /* min-height: calc(100vh - 50px); */
 }
 @media (max-width: 600px) {
   .content-layout{
