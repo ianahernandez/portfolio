@@ -31,18 +31,23 @@
       </section>
       <section class="relevant hidden md:block md:w-4/12 pl-4">
         <h3 class="subtitle">Destacado</h3>
-        <div :class="`card px-2 ${relevant.length ? '' : 'loader h-40'}`">
-          <div class="flex mb-4" v-for="post in relevant" :key="post.id">
-            <div class="w-24">
-              <img class="rounded" :src="post.image.url" :alt="post.title">
-              <div class="text-red-300 text-xs"><i class="icon-comment-alt"></i> <span class="font-bold text-sm text-red-300 "></span>
-                <DisqusCount class="text-red-300 " lang="es" shortname='ianahernandez' :identifier="`/blog/${post.slug}`" />
+        <div :class="`card px-2 ${relevant ? '' : 'loader h-40'}`">
+          <template v-if="relevant && relevant.length">
+            <div class="flex mb-4 cursor-pointer" v-for="post in relevant" :key="post.id" @click="readMore(post.slug)">
+              <div class="w-24">
+                <img class="rounded" :src="post.image.url" :alt="post.title">
+                <div class="text-red-300 text-xs"><i class="icon-comment-alt"></i> <span class="font-bold text-sm text-red-300 "></span>
+                  <DisqusCount class="text-red-300 " lang="es" shortname='ianahernandez' :identifier="`/blog/${post.slug}`" />
+                </div>
+              </div>
+              <div class="pl-3">
+                <h2 class="heading-2 text-base">{{post.title}}</h2>
+                <p class="line-clamp-2 text-xs text-gray-700">{{post.shortDescription}}</p>
               </div>
             </div>
-            <div class="pl-3">
-              <h2 class="heading-2 text-base">{{post.title}}</h2>
-              <p class="line-clamp-2 text-xs text-gray-700">{{post.shortDescription}}</p>
-            </div>
+          </template>
+          <div v-else-if="relevant && !relevant.length">
+            <p class="text-center">No hay más publicaciones destacadas</p>
           </div>
         </div>
 
@@ -91,7 +96,7 @@ export default {
   data(){
     return{
       data: [],
-      relevant: []
+      relevant: null
     }
   },
   methods: {
@@ -106,6 +111,7 @@ export default {
     this.$parent.titleName = "Blog"
     this.data = await this.$store.dispatch('getPosts')
     this.relevant = await this.$store.dispatch('getPostsRelevant')
+    this.relevant = []
   }
 }
 </script>

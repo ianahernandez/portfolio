@@ -1,6 +1,6 @@
 <template>
   <div class="post">
-    <h1 class="title pl-0  md:w-8/12">{{ data.title }}</h1>
+    <h1 class="title pl-0 md:w-8/12">{{ data.title }}</h1>
     <div class="flex" v-if="data.title">
       <section class="posts w-full md:w-8/12 md:pr-4">
         <div v-if="data.updated_by" class="mt-8 flex justify-between flex-wrap">
@@ -49,7 +49,11 @@
             />
             <span class="text-gray-700 text-sm">{{data.image.caption}}</span>
           </div>
-          <vue-simple-markdown class="text-gray-800 leading-8" :postrender="parseLinks" :source="data.content"></vue-simple-markdown>
+          <vue-simple-markdown
+            class="text-gray-800 leading-8"
+            :postrender="parseLinks"
+            :source="data.content"
+          ></vue-simple-markdown>
           <!-- <div class="text-gray-800 leading-8" v-html="data.content"></div> -->
         </article>
 
@@ -96,7 +100,7 @@
         <hr />
 
         <div class="max-w-xl my-10 pb-8">
-          <Disqus shortname="ianahernandez" lang="es_ES"/>
+          <Disqus shortname="ianahernandez" lang="es_ES" />
           <!-- <h2 class="subtitle">Agrega un comentario</h2>
           <input type="text" class="w-full" placeholder="Tu nombre">
           <textarea class="w-full" name="content" id="" rows="10" placeholder="Comentario"></textarea>
@@ -107,24 +111,34 @@
       <section class="relevant hidden md:block md:w-4/12 pl-4">
         <h3 class="subtitle">Destacado</h3>
         <div class="card px-2">
-          <div class="flex mb-4" v-for="post in relevant" :key="post.id">
-            <div class="w-24">
-              <img class="rounded" :src="post.image.url" :alt="post.title" />
-              <div class="text-red-300 text-xs">
-                <i class="icon-comment-alt"></i>
-                <span class="font-bold text-sm text-red-300"></span>
-                <DisqusCount
-                  class="text-red-300"
-                  lang="es"
-                  shortname="ianahernandez"
-                  :identifier="`/blog/${post.slug}`"
-                />
+          <template v-if="relevantFiltered.length">
+            <div
+              class="flex mb-4 cursor-pointer"
+              v-for="post in relevantFiltered"
+              :key="post.id"
+              @click="readMore(post.slug)"
+            >
+              <div class="w-24">
+                <img class="rounded" :src="post.image.url" :alt="post.title" />
+                <div class="text-red-300 text-xs">
+                  <i class="icon-comment-alt"></i>
+                  <span class="font-bold text-sm text-red-300"></span>
+                  <DisqusCount
+                    class="text-red-300"
+                    lang="es"
+                    shortname="ianahernandez"
+                    :identifier="`/blog/${post.slug}`"
+                  />
+                </div>
+              </div>
+              <div class="pl-3">
+                <h2 class="heading-2 text-base">{{post.title}}</h2>
+                <p class="line-clamp-2 text-xs text-gray-700">{{post.shortDescription}}</p>
               </div>
             </div>
-            <div class="pl-3">
-              <h2 class="heading-2 text-base">{{post.title}}</h2>
-              <p class="line-clamp-2 text-xs text-gray-700">{{post.shortDescription}}</p>
-            </div>
+          </template>
+          <div v-else>
+            <p class="text-center">No hay más publicaciones destacadas</p>
           </div>
         </div>
 
@@ -137,8 +151,7 @@
         </div>-->
       </section>
     </div>
-    <div v-else="" class="loader loader-screen">
-    </div>
+    <div v-else class="loader loader-screen"></div>
   </div>
 </template>
 <script>
@@ -152,26 +165,84 @@ export default {
   metaInfo() {
     return {
       meta: [
-        {vmid: 'description', name: 'description', content: this.metaInfoData.description},
-        {vmid: 'og:title', property: 'og:title', content: this.metaInfoData.title},
-        {vmid: 'og:site_name', property: 'og:site_name', content: 'Ana Hernández | Developer'},
-        {vmid: 'og:type', property: 'og:type', content: 'article'},
-        {vmid: 'og:url', property: 'og:url', content: window.location.href},
-        {vmid: 'og:image', property: 'og:image', content: "https://res.cloudinary.com/ianahernandez/image/upload/v1616821726/banner_blog_9a5503b125.png"},
-        {vmid: 'og:image:type', property: 'og:image:type', content: "image/jpeg"},
-        {vmid: 'og:description', property: 'og:description', content: this.metaInfoData.description},
-        {vmid: 'twitter:card', property: 'twitter:card', content: 'summary_large_image'},
-        {vmid: 'twitter:domain', property: 'twitter:domain', content: 'ianahernandez.tech'},
-        {vmid: 'twitter:url', property: 'twitter:url', content: window.location.href},
-        {vmid: 'twitter:title', property: 'twitter:title', content: this.metaInfoData.title},
-        {vmid: 'twitter:description', property: 'twitter:description', content: this.metaInfoData.description},
-        {vmid: 'twitter:image', property: 'twitter:image', content: "https://res.cloudinary.com/ianahernandez/image/upload/v1616821726/banner_blog_9a5503b125.png"},
-        {vmid: 'twitter:site', property: 'twitter:site', content: '@ianahernandez'},
-        {vmid: 'twitter:creator', property: 'twitter:creator', content: '@ianahernandez'},
+        {
+          vmid: "description",
+          name: "description",
+          content: this.metaInfoData.description
+        },
+        {
+          vmid: "og:title",
+          property: "og:title",
+          content: this.metaInfoData.title
+        },
+        {
+          vmid: "og:site_name",
+          property: "og:site_name",
+          content: "Ana Hernández | Developer"
+        },
+        { vmid: "og:type", property: "og:type", content: "article" },
+        { vmid: "og:url", property: "og:url", content: window.location.href },
+        {
+          vmid: "og:image",
+          property: "og:image",
+          content:
+            "https://res.cloudinary.com/ianahernandez/image/upload/v1616821726/banner_blog_9a5503b125.png"
+        },
+        {
+          vmid: "og:image:type",
+          property: "og:image:type",
+          content: "image/jpeg"
+        },
+        {
+          vmid: "og:description",
+          property: "og:description",
+          content: this.metaInfoData.description
+        },
+        {
+          vmid: "twitter:card",
+          property: "twitter:card",
+          content: "summary_large_image"
+        },
+        {
+          vmid: "twitter:domain",
+          property: "twitter:domain",
+          content: "ianahernandez.tech"
+        },
+        {
+          vmid: "twitter:url",
+          property: "twitter:url",
+          content: window.location.href
+        },
+        {
+          vmid: "twitter:title",
+          property: "twitter:title",
+          content: this.metaInfoData.title
+        },
+        {
+          vmid: "twitter:description",
+          property: "twitter:description",
+          content: this.metaInfoData.description
+        },
+        {
+          vmid: "twitter:image",
+          property: "twitter:image",
+          content:
+            "https://res.cloudinary.com/ianahernandez/image/upload/v1616821726/banner_blog_9a5503b125.png"
+        },
+        {
+          vmid: "twitter:site",
+          property: "twitter:site",
+          content: "@ianahernandez"
+        },
+        {
+          vmid: "twitter:creator",
+          property: "twitter:creator",
+          content: "@ianahernandez"
+        }
       ],
       title: this.metaInfoData.title,
-      titleTemplate: '%s | Ana Hernández'
-    }
+      titleTemplate: "%s | Ana Hernández"
+    };
   },
   data() {
     return {
@@ -180,16 +251,19 @@ export default {
     };
   },
   computed: {
-    urlShare(){
+    urlShare() {
       return encodeURIComponent(window.location.href);
       //return encodeURIComponent("https://stackoverflow.com/questions/40015037/can-vue-router-open-a-link-in-a-new-tab")
     },
     metaInfoData() {
       return {
-        title: this.data ? this.data.title: "",
-        description: this.data ? this.data.shortDescription: "",
-        image: this.data? this.data.image: "",
-      }
+        title: this.data ? this.data.title : "",
+        description: this.data ? this.data.shortDescription : "",
+        image: this.data ? this.data.image : ""
+      };
+    },
+    relevantFiltered() {
+      return this.relevant.filter(el => el.id != this.data.id) || [];
     }
   },
   components: {
@@ -212,14 +286,16 @@ export default {
       }
     },
     tweetPost() {
-      let titleShare = this.data.title
-      titleShare = `${titleShare.replace(" ", "%20")}👇👇%0A`
-      let tags = `${this.data.tags.map(el => el.name.replace(" ","")).join("%2C")}%0A`;
+      let titleShare = this.data.title;
+      titleShare = `${titleShare.replace(" ", "%20")}👇👇%0A`;
+      let tags = `${this.data.tags
+        .map(el => el.name.replace(" ", ""))
+        .join("%2C")}%0A`;
       window.open(
         `https://twitter.com/share?url=${this.urlShare}&text=${titleShare}&hashtags=${tags}&via=ianahernandez`,
         "facebook-share-dialog",
         "width=500,height=300"
-      )
+      );
       return false;
     },
     shareFacebookPost() {
@@ -230,12 +306,22 @@ export default {
       );
       return false;
     },
-    shareLinkedin(){
-      window.open('http://www.linkedin.com/shareArticle?mini=true&url=' + this.urlShare + '&title=HolaTitulo','', '_blank, width=500, height=500, resizable=yes, scrollbars=yes'); return false;
+    shareLinkedin() {
+      window.open(
+        "http://www.linkedin.com/shareArticle?mini=true&url=" +
+          this.urlShare +
+          "&title=HolaTitulo",
+        "",
+        "_blank, width=500, height=500, resizable=yes, scrollbars=yes"
+      );
+      return false;
     },
-    parseLinks(html){
-      let exp = /href/gi
-      return html.replace(exp, 'rel="noopener" href')
+    parseLinks(html) {
+      let exp = /href/gi;
+      return html.replace(exp, 'rel="noopener" href');
+    },
+    readMore(slug) {
+      this.$router.push({ name: "post", params: { slug: slug } });
     }
   },
   async mounted() {
@@ -284,7 +370,7 @@ export default {
 
 /*--- end disqus css --*/
 /* Image post */
-.img-post{
+.img-post {
   max-height: 600px;
 }
 </style>
